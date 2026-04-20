@@ -28,6 +28,7 @@ Currently following a structured course and building understanding step-by-step.
 | 17 | Minimum Distance to the Target Element | Easy | Array |
 | 18 | Sliding Window Maximum | Hard | Monotonic Deque |
 | 19 | Minimum Window Substring | Hard | Sliding Window |
+| 20 | 2078. Two Furthest Houses With Different Colors | Easy | Array |
 
 ## 🧠 Patterns Covered
 
