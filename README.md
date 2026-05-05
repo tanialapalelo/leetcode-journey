@@ -31,6 +31,7 @@ Currently following a structured course and building understanding step-by-step.
 | 20 | 2078. Two Furthest Houses With Different Colors | Easy       | Array                             |
 | 21 | 125. Valid Palindrome | Easy       | String , Two Pointer              |
 | 22 | 167. Two Sum II - Input Array Is Sorted | Medium     | Array, Two Pointer, Binary Search |
+| 23 | 15. 3Sum | Medium | Array, Two Pointer, Sorting |
 
 ## 🧠 Patterns Covered
 
