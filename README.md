@@ -32,6 +32,7 @@ Currently following a structured course and building understanding step-by-step.
 | 21 | 125. Valid Palindrome | Easy       | String , Two Pointer              |
 | 22 | 167. Two Sum II - Input Array Is Sorted | Medium     | Array, Two Pointer, Binary Search |
 | 23 | 15. 3Sum | Medium | Array, Two Pointer, Sorting |
+| 24 | 11. Container With Most Water | Medium | Array, Two Pointer, Greedy |
 
 ## 🧠 Patterns Covered
 
