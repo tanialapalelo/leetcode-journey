@@ -33,6 +33,9 @@ Currently following a structured course and building understanding step-by-step.
 | 22 | 167. Two Sum II - Input Array Is Sorted | Medium     | Array, Two Pointer, Binary Search |
 | 23 | 15. 3Sum | Medium | Array, Two Pointer, Sorting |
 | 24 | 11. Container With Most Water | Medium | Array, Two Pointer, Greedy |
+| 25 | 42. Trapping Rain Water | Hard | Array, Two Pointers, Dynamic Programming, Stack, Monotonic Stack
+| 26 | 26. Remove Duplicates from Sorted Array | Easy | Array, Two Pointer
+| 27 | 31. Next Permutation | Medium | Array, Two Pointer
 
 ## 🧠 Patterns Covered
 
