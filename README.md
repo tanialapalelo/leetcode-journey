@@ -38,6 +38,10 @@ Currently following a structured course and building understanding step-by-step.
 | 27   | Next Permutation                                | Medium     | Array, Two Pointers                              |
 | 28   | Fizz Buzz                                       | Easy       | Math, String                                     |
 | 29   | Longest Common Prefix                           | Easy       | String                                           |
+| 30   | Encode and Decode Strings                       | Medium     | String, Design                                   |
+| 31   | Palindromic Substrings                          | Medium     | String, Two Pointers, Dynamic Programming        |
+| 32   | Binary Search                                   | Easy       | Binary Search                                    |
+| 33   | Find First and Last Position of Element in Sorted Array | Medium | Binary Search                              |
 
 ## Patterns Covered
 
@@ -47,6 +51,7 @@ Currently following a structured course and building understanding step-by-step.
 - **Monotonic Deque** — maintaining max/min in window
 - **Prefix** — prefix sum/product
 - **Math / String** — basic manipulation
+- **Binary Search** — classic, find bounds, sorted array variants
 
 ## Reference Files
 
