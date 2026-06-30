@@ -45,6 +45,7 @@ Currently following a structured course and building understanding step-by-step.
 | 34   | Merge Sorted Array                                      | Easy   | Array, Two Pointers                        |
 | 35   | Sort Colors                                             | Medium | Array, Two Pointers, Dutch National Flag   |
 | 36   | Majority Element                                        | Easy   | Array, Boyer-Moore Voting                  |
+| 37   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
 
 ## Patterns Covered
 
