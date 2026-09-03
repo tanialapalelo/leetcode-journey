@@ -42,6 +42,11 @@ Currently following a structured course and building understanding step-by-step.
 | 31   | Palindromic Substrings                          | Medium     | String, Two Pointers, Dynamic Programming        |
 | 32   | Binary Search                                   | Easy       | Binary Search                                    |
 | 33   | Find First and Last Position of Element in Sorted Array | Medium | Binary Search                              |
+| 34   | Merge Sorted Array                                      | Easy   | Array, Two Pointers                        |
+| 35   | Sort Colors                                             | Medium | Array, Two Pointers, Dutch National Flag   |
+| 36   | Majority Element                                        | Easy   | Array, Boyer-Moore Voting                  |
+| 37   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
+| 38   | Middle of the Linked List                               | Easy   | Linked List, Fast & Slow Pointers          |
 
 ## Patterns Covered
 
@@ -52,6 +57,8 @@ Currently following a structured course and building understanding step-by-step.
 - **Prefix** — prefix sum/product
 - **Math / String** — basic manipulation
 - **Binary Search** — classic, find bounds, sorted array variants
+- **Dutch National Flag** — three-pointer single-pass partitioning into three regions
+- **Boyer-Moore Voting** — O(1) space majority element via vote cancellation
 
 ## Reference Files
 
