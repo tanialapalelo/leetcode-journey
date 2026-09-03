@@ -62,3 +62,6 @@ var twoSum = function(numbers, target) {
 // If the sum is less than the target, we move the left pointer to the right to increase the sum.
 // If the sum is greater than the target, we move the right pointer to the left to decrease the sum.
 // We continue this process until we find the two numbers that add up to the target.
+
+// Time complexity: O(n) - l and r converge toward each other, each index visited at most once.
+// Space complexity: O(1) - only the two pointers are used, matching the "constant extra space" requirement.

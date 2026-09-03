@@ -114,3 +114,7 @@ var topKFrequent = function(nums, k) {
   while (heap.size() > 0) res.push(heap.pop()[0]);
   return res;
 };
+
+// Time complexity: O(n log k) - building freq takes O(n); for each of the up to n unique
+// elements we push/pop from a heap capped at size k, each operation costing O(log k).
+// Space complexity: O(n + k) - freq map holds up to n unique elements, heap holds up to k.

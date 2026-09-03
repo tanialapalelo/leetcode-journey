@@ -93,4 +93,8 @@ If we successfully compare all characters without finding a mismatch, we return 
 for scenario s = " "
 - l = 0, r = 0
 - while (l < r) is false, so we skip the loop and return true, which is correct because an empty string is a palindrome.
+
+Time complexity: O(n) - l and r move toward each other, so their combined movement is
+bounded by n regardless of how many non-alphanumeric characters are skipped.
+Space complexity: O(1) - only the two pointers are used.
  */

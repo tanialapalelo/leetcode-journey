@@ -83,3 +83,7 @@ var threeSum = function(nums) {
 // We can sort the array first and then use two pointers to find the triplets that sum up to zero.
 // We can iterate through the array and for each number, we can use two pointers to find the other two numbers that sum up to the negative of the current number.
 // We also need to skip duplicate values to avoid duplicate triplets in the result.
+
+// Time complexity: O(n^2) - sorting is O(n log n), but the outer loop (O(n)) combined with
+// the inner two-pointer sweep (O(n) per outer iteration) dominates, giving O(n^2) overall.
+// Space complexity: O(log n) to O(n) for the sort's internal call stack (excluding the output array).

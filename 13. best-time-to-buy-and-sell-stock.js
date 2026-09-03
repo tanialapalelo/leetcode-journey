@@ -58,6 +58,9 @@ var maxProfit = function(prices) {
     return profit;
 };
 
+// Time complexity: O(n) - single pass through prices.
+// Space complexity: O(1) - only a few scalar variables.
+
 // Another solution with sliding window approach
 /**
  * @param {number[]} prices
@@ -100,3 +103,6 @@ function maxProfit(prices) {
  *
  * Notice: the “window” started at buy=7 then slid to buy=1 when we found a better buy day
  */
+
+// Time complexity: O(n) - single pass with the right pointer.
+// Space complexity: O(1) - only left/best scalars are used.

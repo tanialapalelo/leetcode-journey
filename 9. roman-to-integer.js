@@ -82,3 +82,6 @@ var romanToInt = function(s) {
     }
     return total;
 };
+
+// Time complexity: O(n) - single pass through the string, n = s.length.
+// Space complexity: O(1) - romainNumbers map has a fixed size of 7 entries.

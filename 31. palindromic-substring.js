@@ -138,7 +138,7 @@ var countSubstrings = function(s) {
     let count = 0;
     const expand = (left, right) => {
         while (left >= 0 && right < s.length && s[left] === s[right]) {
-            count++;
+            count++; // every successful step IS a new palindrome, so count it immediately
             left--;
             right++;
         }

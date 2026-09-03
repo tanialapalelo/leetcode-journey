@@ -54,3 +54,6 @@
 var gcdOfOddEvenSums = function(n) {
     return n;
 };
+
+// Time complexity: O(1) - the algebraic proof above lets us return n directly, no loop needed.
+// Space complexity: O(1) - no extra data structures.

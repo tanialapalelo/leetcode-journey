@@ -62,3 +62,8 @@ var longestConsecutive = function(nums) {
     }
     return longestSubs;
 };
+
+// Time complexity: O(n) - the inner while loop looks nested, but it only runs for numbers
+// that start a sequence, and each number is visited by it at most once across the whole run
+// (amortized O(n)), not O(n^2).
+// Space complexity: O(n) - the Set stores all n numbers.

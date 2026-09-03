@@ -52,3 +52,6 @@ var containsDuplicate = function(nums) {
     }
     return false;
 };
+
+// Time complexity: O(n) - single pass, Set.has/add are O(1) average.
+// Space complexity: O(n) - the Set can store up to n unique elements.

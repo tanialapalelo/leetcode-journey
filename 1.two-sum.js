@@ -44,6 +44,8 @@ var twoSum = function(nums, target) {
     return [];
 };
 
+// Time complexity: O(n) - single pass through nums, Map.has/set are O(1) average.
+// Space complexity: O(n) - map can store up to n entries.
 
 const percobaan = twoSum([2,7,11,15], 9)
 console.log(percobaan)

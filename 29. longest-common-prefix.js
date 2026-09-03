@@ -68,7 +68,7 @@ var longestCommonPrefix = function(strs) {
 // Trim one char at a time from the right until every string starts with it.
 // Time: O(S)  Space: O(1)
 var longestCommonPrefix = function(strs) {
-    let prefix = strs[0];
+    let prefix = strs[0]; // the initial prexif and therefore for loop starts at index 1
 
     for (let i = 1; i < strs.length; i++) {
         while (!strs[i].startsWith(prefix)) {

@@ -158,4 +158,9 @@ Deque as [index:value]:
 
 Result: [3,3,5,5,6,7]
 
+Time complexity: O(n) - each index is pushed and popped from the deque at most once across
+the whole run (amortized), even though there's a while loop inside the for loop.
+Space complexity: O(k) - the deque holds at most k indices (the window size); the output
+array res is O(n) but that's the required result, not extra working space.
+
 */

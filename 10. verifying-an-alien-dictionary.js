@@ -72,6 +72,10 @@ var isAlienSorted = function(words, order) {
     
 };
 
+// Time complexity: O(total characters across words) - adjacent word pairs are compared
+// character by character, but the inner loop breaks as soon as a differing character is found.
+// Space complexity: O(1) extra - orderMap always holds at most 26 entries.
+
 /* NOTE FROM GPT
 
 Copilot said: 

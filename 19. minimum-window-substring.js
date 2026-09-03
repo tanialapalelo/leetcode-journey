@@ -97,4 +97,10 @@ var minWindow = function(s, t) {
 4) Once we have a valid window (formed === required), we try to shrink the window from the left to find the minimum length. We update our answer if the current window is shorter than the previously recorded answer.
 5) As we shrink the window, we also update the frequencies in windowFreq and check if we still have a valid window. If not, we decrement the formed count and continue moving the left pointer.
 6) Finally, we return the minimum window substring if we found one, or an empty string if no valid window exists.
+
+Time complexity: O(m + n) - building tFreq is O(m); the right pointer scans s once (O(n));
+the inner while loop (shrinking) looks nested but left only ever moves forward, so its total
+work across the whole run is also bounded by O(n) (amortized), not O(n^2).
+Space complexity: O(1) - tFreq/windowFreq are bounded by the alphabet size (English letters),
+not by the length of s or t.
 */

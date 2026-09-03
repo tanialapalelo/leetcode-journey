@@ -87,3 +87,6 @@ Why this is better
     Infinity removes special -1 handling
     no need if (nums.length == 0) (constraints typically guarantee target exists)
 */
+
+// Time complexity: O(n) - single pass through nums.
+// Space complexity: O(1) - only the answer scalar is used.

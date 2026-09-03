@@ -94,6 +94,9 @@ var isAnagram = function(s, t) {
     return true
 };
 
+// Time complexity: O(n) - two linear passes through s and t (n = string length).
+// Space complexity: O(1) - map keys are bounded by the 26 lowercase English letters, not by n.
+
 /* EXPLANATION
 1. First, we check if the lengths of the two strings are different. If they are, we can immediately return false since anagrams must be of the same length.
 2. We create a Map to keep track of the character counts.

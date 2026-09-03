@@ -94,3 +94,6 @@ function tictactoe(moves) {
     console.log(`END -> ${result}`);
     return result;
 }
+
+// Time complexity: O(m) where m = moves.length (at most 9) - single pass, O(1) work per move.
+// Space complexity: O(1) - rows/cols arrays are fixed size 3, diag/anti are scalars.

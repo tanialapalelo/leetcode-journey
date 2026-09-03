@@ -89,3 +89,6 @@ var fizzBuzz = function(n) {
     }
     return result;
 };
+
+// Time complexity: O(n) for all three approaches - a single loop from 1 to n.
+// Space complexity: O(n) for the result array (required output, not extra working space).

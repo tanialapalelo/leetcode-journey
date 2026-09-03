@@ -216,3 +216,6 @@ function firstMissingPositive(nums) {
 // 1) normalize: replace all non-positive and out of range values with n+1 (a dummy value that is out of our target range [1..n])
 // 2) mark: for each number num in [1..n], mark its presence by negating the value at index num-1 (if it's not already negative)
 // 3) first positive index: the first index i that has a positive value means that number i+1 is missing, so return i+1. If all indices are negative, then return n+1.
+
+// Time complexity: O(n) - three separate linear passes (normalize, mark, scan), not nested.
+// Space complexity: O(1) - values are marked in place, no extra data structures.

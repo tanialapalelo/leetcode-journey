@@ -260,3 +260,7 @@ function reverse(nums, start, end) {
         end--;
     }
 }
+
+// Time complexity: O(n) - three separate linear scans (find pivot, find swap target, reverse
+// suffix) run one after another, not nested, so they add up to O(n) instead of multiplying.
+// Space complexity: O(1) - all swaps happen in place.

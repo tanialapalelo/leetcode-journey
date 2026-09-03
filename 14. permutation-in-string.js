@@ -67,3 +67,7 @@ function checkInclusion(s1, s2) {
         return true;
     }
 }
+
+// Time complexity: O(26 * (n - m)) = O(n) - the window slides one character at a time across
+// s2, and each slide compares two 26-length arrays (constant factor 26).
+// Space complexity: O(1) - fixed-size 26-element arrays regardless of input size.
