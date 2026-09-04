@@ -49,3 +49,16 @@ var twoSum = function(nums, target) {
 
 const percobaan = twoSum([2,7,11,15], 9)
 console.log(percobaan)
+
+
+/*
+Time Complexity: O(n)
+
+You iterate through the array at most once.
+Inside the loop, the operations tempMap.has(subtract) and tempMap.get(subtract) are average case $O(1)$ because they use a Map (which is a hash table).
+Therefore, the total time complexity is $O(n)$.
+Space Complexity: O(n)
+
+In the worst-case scenario (e.g., the two numbers are at the very end of the array, or no solution exists although the problem guarantees one), you will store $n-1$ elements in the tempMap.
+Therefore, the space complexity is proportional to the input size, which is $O(n)$.
+Your solution is optimal for this problem. The use of a hash map (Map) is the standard way to achieve $O(n)$ time complexity for the "Two Sum" problem, as opposed to the $O(n^2)$ brute force approach.

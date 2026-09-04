@@ -39,14 +39,16 @@ Currently following a structured course and building understanding step-by-step.
 | 28   | Fizz Buzz                                       | Easy       | Math, String                                     |
 | 29   | Longest Common Prefix                           | Easy       | String                                           |
 | 30   | Encode and Decode Strings                       | Medium     | String, Design                                   |
-| 31   | Palindromic Substrings                          | Medium     | String, Two Pointers, Dynamic Programming        |
-| 32   | Binary Search                                   | Easy       | Binary Search                                    |
-| 33   | Find First and Last Position of Element in Sorted Array | Medium | Binary Search                              |
-| 34   | Merge Sorted Array                                      | Easy   | Array, Two Pointers                        |
-| 35   | Sort Colors                                             | Medium | Array, Two Pointers, Dutch National Flag   |
-| 36   | Majority Element                                        | Easy   | Array, Boyer-Moore Voting                  |
-| 37   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
+| 31   | Palindromic Substrings                                  | Medium | String, Two Pointers, Dynamic Programming  |
+| 32   | Longest Palindromic Substring                           | Medium | String, Two Pointers, Dynamic Programming  |
+| 33   | Text Justification                                      | Hard   | String, Greedy, Simulation                 |
+| 34   | Binary Search                                           | Easy   | Binary Search                              |
+| 35   | Find First and Last Position of Element in Sorted Array | Medium | Binary Search                              |
+| 36   | Merge Sorted Array                                      | Easy   | Array, Two Pointers                        |
+| 37   | Sort Colors                                             | Medium | Array, Two Pointers, Dutch National Flag   |
 | 38   | Middle of the Linked List                               | Easy   | Linked List, Fast & Slow Pointers          |
+| 39   | Majority Element                                        | Easy   | Array, Boyer-Moore Voting                  |
+| 40   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
 
 ## Patterns Covered
 
@@ -59,6 +61,91 @@ Currently following a structured course and building understanding step-by-step.
 - **Binary Search** — classic, find bounds, sorted array variants
 - **Dutch National Flag** — three-pointer single-pass partitioning into three regions
 - **Boyer-Moore Voting** — O(1) space majority element via vote cancellation
+- **Linked List** — traversal, reversal, fast & slow pointers
+
+## Practice Order (By Category)
+
+The table above is ordered by **when I solved it** (matches the course/video order) — that numbering is append-only, so file names never get renamed or moved into folders as new problems are added.
+
+When practicing from a different list (grouped by topic instead of by video), use this table instead. It's just a second view over the same files, grouped by pattern.
+
+> New problem from another playlist that isn't solved yet? Keep appending it to the repo with the next sequential number in the existing flat naming scheme (e.g. `41. maximum-subarray.js`), then add one row here and one row to the table above.
+
+### Arrays & Hashing
+
+| Problem | Difficulty | File |
+|---|---|---|
+| Two Sum | Easy | [1.two-sum.js](./1.two-sum.js) |
+| Contains Duplicate | Easy | [3.contains-duplicate.js](./3.contains-duplicate.js) |
+| Contains Duplicate II | Easy | [4.contains-duplicate-ii.js](./4.contains-duplicate-ii.js) |
+| Valid Anagram | Easy | [5.valid-anagram.js](./5.valid-anagram.js) |
+| Group Anagrams | Medium | [6. group-anagrams.js](./6.%20group-anagrams.js) |
+| Product of Array Except Self | Medium | [7. product-of-array-except-self.js](./7.%20product-of-array-except-self.js) |
+| Top K Frequent Elements | Medium | [8. top-k-frequent-elements.js](./8.%20top-k-frequent-elements.js) |
+| Longest Consecutive Sequence | Medium | [11. longest-consecutive-sequence.js](./11.%20longest-consecutive-sequence.js) |
+| First Missing Positive | Hard | [12. first-missing-positive.js](./12.%20first-missing-positive.js) |
+| Minimum Distance to the Target Element | Easy | [17. minimum-distance-to-the-target-element.js](./17.%20minimum-distance-to-the-target-element.js) |
+| Two Furthest Houses With Different Colors | Easy | [20. two-furthest-houses-with-different-colors.js](./20.%20two-furthest-houses-with-different-colors.js) |
+| Majority Element | Easy | [39. majority-element.js](./39.%20majority-element.js) |
+
+### Two Pointers
+
+| Problem | Difficulty | File |
+|---|---|---|
+| Valid Palindrome | Easy | [21. valid-polindrome.js](./21.%20valid-polindrome.js) |
+| Two Sum II - Input Array Is Sorted | Medium | [22. two-sum-ii-input-array-is-sorted.js](./22.%20two-sum-ii-input-array-is-sorted.js) |
+| 3Sum | Medium | [23. 3sum.js](./23.%203sum.js) |
+| Container With Most Water | Medium | [24. container-with-most-water.js](./24.%20container-with-most-water.js) |
+| Trapping Rain Water | Hard | [25. trapping-rain-water.js](./25.%20trapping-rain-water.js) |
+| Remove Duplicates from Sorted Array | Easy | [26. remove-duplicatess-from-sorted-array.js](./26.%20remove-duplicatess-from-sorted-array.js) |
+| Next Permutation | Medium | [27. next-permutation.js](./27.%20next-permutation.js) |
+| Palindromic Substrings | Medium | [31. palindromic-substring.js](./31.%20palindromic-substring.js) |
+| Longest Palindromic Substring | Medium | [32. longest-palindromic-substring.js](./32.%20longest-palindromic-substring.js) |
+| Merge Sorted Array | Easy | [36. merge-sorted-array.js](./36.%20merge-sorted-array.js) |
+| Sort Colors | Medium | [37. sort-colors.js](./37.%20sort-colors.js) |
+
+### Sliding Window
+
+| Problem | Difficulty | File |
+|---|---|---|
+| Best Time to Buy and Sell Stock | Easy | [13. best-time-to-buy-and-sell-stock.js](./13.%20best-time-to-buy-and-sell-stock.js) |
+| Permutation in String | Medium | [14. permutation-in-string.js](./14.%20permutation-in-string.js) |
+| Longest Repeating Character Replacement | Medium | [15. longest-repeating-character-replacement.js](./15.%20longest-repeating-character-replacement.js) |
+| Longest Substring Without Repeating Characters | Medium | [16. longest-substring-without-repeating-characters.js](./16.%20longest-substring-without-repeating-characters.js) |
+| Sliding Window Maximum | Hard | [18. sliding-window-maximum.js](./18.%20sliding-window-maximum.js) |
+| Minimum Window Substring | Hard | [19. minimum-window-substring.js](./19.%20minimum-window-substring.js) |
+
+### Binary Search
+
+| Problem | Difficulty | File |
+|---|---|---|
+| Binary Search | Easy | [34. binary-search.js](./34.%20binary-search.js) |
+| Find First and Last Position of Element in Sorted Array | Medium | [35. find-first-and-last-position-of-element-in-sorted-array.js](./35.%20find-first-and-last-position-of-element-in-sorted-array.js) |
+
+### Linked List
+
+| Problem | Difficulty | File |
+|---|---|---|
+| Middle of the Linked List | Easy | [38. middle-linked-list.js](./38.%20middle-linked-list.js) |
+| Reverse Linked List | Easy | [40. reverse-linked-list.js](./40.%20reverse-linked-list.js) |
+
+### Math & String
+
+| Problem | Difficulty | File |
+|---|---|---|
+| GCD of Odd & Even | Easy | [2.gcd-of-odd-even.js](./2.gcd-of-odd-even.js) |
+| Roman to Integer | Easy | [9. roman-to-integer.js](./9.%20roman-to-integer.js) |
+| Verifying an Alien Dictionary | Easy | [10. verifying-an-alien-dictionary.js](./10.%20verifying-an-alien-dictionary.js) |
+| Fizz Buzz | Easy | [28. fizz-buzz.js](./28.%20fizz-buzz.js) |
+| Longest Common Prefix | Easy | [29. longest-common-prefix.js](./29.%20longest-common-prefix.js) |
+| Encode and Decode Strings | Medium | [30. encode-and-decode-string.js](./30.%20encode-and-decode-string.js) |
+| Text Justification | Hard | [33. text-justification.js](./33.%20text-justification.js) |
+
+### Matrix / Misc
+
+| Problem | Difficulty | File |
+|---|---|---|
+| Find Winner on a Tic-Tac-Toe Game | Easy | [14.1 find-winner-on-a-tic-tac-toe-game.js](./14.1%20find-winner-on-a-tic-tac-toe-game.js) |
 
 ## Reference Files
 

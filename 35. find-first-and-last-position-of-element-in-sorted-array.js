@@ -74,7 +74,7 @@ function findBound(nums, target, isFirst) {
 
 
 /*
-EXPLANATIONq
+EXPLANATION
 
 We can use binary search to find the leftmost and rightmost occurrences of the target in O(log n) time.
 

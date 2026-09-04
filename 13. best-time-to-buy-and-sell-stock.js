@@ -105,4 +105,4 @@ function maxProfit(prices) {
  */
 
 // Time complexity: O(n) - single pass with the right pointer.
-// Space complexity: O(1) - only left/best scalars are used.
+// Space complexity: O(1) - only using a fixed number of variables (best and left) regardless of the input size. You aren't creating any new arrays or objects that grow with the input.
