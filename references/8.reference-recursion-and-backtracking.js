@@ -30,7 +30,7 @@ function fib(n) {
     return fib(n - 1) + fib(n - 2); // recursive case
 }
 // WARNING: this is O(2ⁿ) — every call branches into 2 more calls
-// Fix: memoization (see reference-dynamic-programming.js)
+// Fix: memoization (see 11.reference-dynamic-programming.js)
 
 /*
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -130,7 +130,7 @@ A chain of nodes. Each node holds a value and a pointer to the next node.
 No index access — you must walk from the head.
 
 Use when: frequent insert/delete in the middle, implementing queues.
-See: reference-linked-lists.js for full detail.
+See: 7.reference-linked-lists.js for full detail.
 
   Access by index   O(n)
   Insert/delete     O(1) if you have the node, O(n) to find it
@@ -157,5 +157,5 @@ QUICK PICK GUIDE — which structure to use?
 "Last in first out / undo / DFS?"       → Stack
 "First in first out / BFS / order?"     → Queue
 "Frequent insert/delete in middle?"     → Linked List
-"Smallest/largest item always on top?"  → Heap (see reference-heaps.js)
+"Smallest/largest item always on top?"  → Heap (see 10.reference-heaps.js)
 */

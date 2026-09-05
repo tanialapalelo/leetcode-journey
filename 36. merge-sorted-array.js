@@ -156,3 +156,37 @@ Step 4: nums1[1]=2 vs nums2[0]=2 → equal → nums2 wins → nums1[2]=2, nums2P
 Loop ends (nums2Pointer < 0). nums1[0..1] = [1,2] were already in the right place.
 Result: [1, 2, 2, 3, 5, 6] ✓
 */
+
+
+// ======================================================
+// SELF ATTEMPT
+/**
+ * @param {number[]} nums1
+ * @param {number} m
+ * @param {number[]} nums2
+ * @param {number} n
+ * @return {void} Do not return anything, modify nums1 in-place instead.
+ */
+var merge = function(nums1, m, nums2, n) {
+    let p1 = m - 1; // pointer for m which is the nums1
+    let p2 = n - 1;
+    let p = m + n - 1;
+
+    // goal to merge nums2 to nums1
+    while(p2>=0){
+        if(p1 >= 0 && nums1[p1] > nums2[p2]) {
+            nums1[p] = nums1[p1];
+            p1--; // since we do something with the p1
+        }
+        else{
+            nums1[p] = nums2[p2];
+            p2--; // since we do something with the p2
+        }
+        p--; // since we fill something to the 0 values
+    }
+
+    return nums1;
+};
+
+// time complexity: O(m+n) why? because we use two pointer approach start from the end of both arrays, the while loop can run to worst case all the elements of both num1 and num2
+// space complexity: O(1) why? we only have few variables for pointers and no additional DS (i.e new arrays) since we're modifying nums1 in-place

@@ -46,9 +46,9 @@ Currently following a structured course and building understanding step-by-step.
 | 35   | Find First and Last Position of Element in Sorted Array | Medium | Binary Search                              |
 | 36   | Merge Sorted Array                                      | Easy   | Array, Two Pointers                        |
 | 37   | Sort Colors                                             | Medium | Array, Two Pointers, Dutch National Flag   |
-| 38   | Middle of the Linked List                               | Easy   | Linked List, Fast & Slow Pointers          |
-| 39   | Majority Element                                        | Easy   | Array, Boyer-Moore Voting                  |
-| 40   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
+| 38   | Majority Element                                        | Easy   | Array, Boyer-Moore Voting                  |
+| 39   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
+| 40   | Middle of the Linked List                               | Easy   | Linked List, Fast & Slow Pointers          |
 
 ## Patterns Covered
 
@@ -86,7 +86,7 @@ When practicing from a different list (grouped by topic instead of by video), us
 | First Missing Positive | Hard | [12. first-missing-positive.js](./12.%20first-missing-positive.js) |
 | Minimum Distance to the Target Element | Easy | [17. minimum-distance-to-the-target-element.js](./17.%20minimum-distance-to-the-target-element.js) |
 | Two Furthest Houses With Different Colors | Easy | [20. two-furthest-houses-with-different-colors.js](./20.%20two-furthest-houses-with-different-colors.js) |
-| Majority Element | Easy | [39. majority-element.js](./39.%20majority-element.js) |
+| Majority Element | Easy | [38. majority-element.js](./39.%20majority-element.js) |
 
 ### Two Pointers
 
@@ -126,8 +126,8 @@ When practicing from a different list (grouped by topic instead of by video), us
 
 | Problem | Difficulty | File |
 |---|---|---|
-| Middle of the Linked List | Easy | [38. middle-linked-list.js](./38.%20middle-linked-list.js) |
-| Reverse Linked List | Easy | [40. reverse-linked-list.js](./40.%20reverse-linked-list.js) |
+| Middle of the Linked List | Easy | [40. middle-linked-list.js](./38.%20middle-linked-list.js) |
+| Reverse Linked List | Easy | [39. reverse-linked-list.js](./40.%20reverse-linked-list.js) |
 
 ### Math & String
 
@@ -154,17 +154,17 @@ Read them in this order — each one builds on the previous.
 
 | Order | File                                      | What it covers                                          |
 |-------|-------------------------------------------|---------------------------------------------------------|
-| 1     | `reference-big-o.js`                      | Complexity notation, rules, drop constants, cheat sheet |
-| 2     | `reference-data-structures.js`            | Array, HashMap, Set, Stack, Queue — when to use each    |
-| 3     | `reference-sorting-algorithms.js`         | Bubble, Selection, Insertion, Merge, Quick, JS .sort()  |
-| 4     | `reference-two-pointers.js`               | Opposite ends, same direction, three pointers           |
-| 5     | `reference-sliding-window.js`             | Fixed window, dynamic expand/shrink                     |
-| 6     | `reference-binary-search.js`              | Classic, find first/last, search-on-answer pattern      |
-| 7     | `reference-linked-lists.js`               | Traversal, reversal, fast/slow pointers, dummy head     |
-| 8     | `reference-recursion-and-backtracking.js` | Call stack, base case, permutations, subsets            |
-| 9     | `reference-trees-and-graphs.js`           | DFS/BFS, tree traversals, grid problems                 |
-| 10    | `reference-heaps.js`                      | Min-heap, top K pattern, heap vs sort                   |
-| 11    | `reference-dynamic-programming.js`        | Memoization vs tabulation, 1D and 2D DP                 |
+| 1     | `1.reference-big-o.js`                   | Complexity notation, rules, drop constants, cheat sheet |
+| 2     | `2.reference-data-structures.js`         | Array, HashMap, Set, Stack, Queue — when to use each    |
+| 3     | `3.reference-sorting-algorithms.js`      | Bubble, Selection, Insertion, Merge, Quick, JS .sort()  |
+| 4     | `4.reference-two-pointers.js`            | Opposite ends, same direction, three pointers           |
+| 5     | `5.reference-sliding-window.js`          | Fixed window, dynamic expand/shrink                     |
+| 6     | `6.reference-binary-search.js`           | Classic, find first/last, search-on-answer pattern      |
+| 7     | `7.reference-linked-lists.js`               | Traversal, reversal, fast/slow pointers, dummy head     |
+| 8     | `8.reference-recursion-and-backtracking.js` | Call stack, base case, permutations, subsets            |
+| 9     | `9.reference-trees-and-graphs.js`           | DFS/BFS, tree traversals, grid problems                 |
+| 10    | `10.reference-heaps.js`                   | Min-heap, top K pattern, heap vs sort                   |
+| 11    | `11.reference-dynamic-programming.js`    | Memoization vs tabulation, 1D and 2D DP                 |
 
 > Start with Big-O (#1) — everything else references it.
 > Read #4 and #5 after solving a few Two Pointer / Sliding Window problems so the patterns feel familiar.

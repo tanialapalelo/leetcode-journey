@@ -1,9 +1,7 @@
 /*
 169. Majority Element
 Easy
-Topics
-premium lock icon
-Companies
+
 Given an array nums of size n, return the majority element.
 
 The majority element is the element that appears more than ⌊n / 2⌋ times. You may assume that the majority element always exists in the array.
@@ -35,7 +33,7 @@ Follow-up: Could you solve the problem in linear time and in O(1) space?
  * @param {number[]} nums
  * @return {number}
  */
-// APPROACH 1 — HashMap: count frequencies
+// APPROACH 1 — HashMap: count frequencies, though here we say hashmap, it's just plain object here but sure we can use hashmap as well
 // Time: O(n) | Space: O(n)  ← needs extra memory proportional to unique elements
 var majorityElementHash = function(nums) {
     const count = {};
@@ -70,6 +68,18 @@ exceeds n/2. Straightforward, but stores all unique elements in memory.
 
   Time:  O(n) — one pass through the array
   Space: O(n) — in the worst case, every element is unique
+
+*note:
+this part right here -> count[num] = (count[num] || 0) + 1;
+Using count[num] = (count[num] || 0) + 1 is a reliable JavaScript pattern for counting frequencies safely without triggering NaN.
+Why It Matters
+- Avoids Errors: It prevents math operations on missing keys.
+- Short Code: It sets a default value in a single line.
+The Modern Alternative
+You can also use the nullish coalescing operator ?? instead of ||.
+- Better for 0: The || operator treats 0 as false.
+- Safely handles null: count[num] ?? 0 only triggers on null or undefined.
+
 
 ─── APPROACH 2: Boyer-Moore Voting ────────────────────────────────────
 Same O(n) time but O(1) space — no hash map needed.
@@ -146,4 +156,45 @@ Result: candidate = 1 ✓
 Notice: 1 got cancelled 3 times by 2, 3, and 4 — but it still had 2 votes
 left at the end because it appeared 5 times vs 3 non-1 cancellations.
 The majority always survives.
+
+MORE EXPLANATION OF APPROACH 2 in Bahasa Indonesia:
+
+ Analogi yang paling gampang: bayangin ini kayak battle royale / perang saudara.
+
+  - Tiap elemen di array itu "prajurit" yang membela angkanya sendiri.
+  - Kalau ketemu prajurit dengan angka sama → gabung, jadi lebih kuat (count++).
+  - Kalau ketemu prajurit dengan angka beda → saling bunuh 1 lawan 1 (count--).
+  - Kalau count jadi 0, artinya kubu yang lagi "berkuasa" (candidate) sudah habis dibantai — ganti candidate ke prajurit yang baru muncul.
+
+  Kenapa ini bisa jadi jawaban benar?
+
+  Karena majority element muncul lebih dari n/2 kali, dia otomatis punya jumlah prajurit lebih banyak daripada gabungan SEMUA angka lain. Jadi walaupun dia terus-terusan "dibantai"
+  1-per-1 sama angka lain, dia nggak akan pernah benar-benar habis — pasti ada sisa di akhir. Itu sebabnya dia jadi "yang terakhir berdiri".
+
+  Trace manual (biar kebayang, coba jalanin sendiri di kertas)
+
+  Array: [1, 2, 3, 1, 1, 4, 1, 1] (majority = 1, muncul 5 dari 8)
+
+  ┌─────┬───────────────┬──────────────────────────────┬───────────┬───────────────┐
+  │ num │ count sebelum │             aksi             │ candidate │ count sesudah │
+  ├─────┼───────────────┼──────────────────────────────┼───────────┼───────────────┤
+  │ 1   │ 0             │ count=0 → candidate baru = 1 │ 1         │ 1             │
+  ├─────┼───────────────┼──────────────────────────────┼───────────┼───────────────┤
+  │ 2   │ 1             │ 2≠1 → lawan                  │ 1         │ 0             │
+  ├─────┼───────────────┼──────────────────────────────┼───────────┼───────────────┤
+  │ 3   │ 0             │ count=0 → candidate baru = 3 │ 3         │ 1             │
+  ├─────┼───────────────┼──────────────────────────────┼───────────┼───────────────┤
+  │ 1   │ 1             │ 1≠3 → lawan                  │ 3         │ 0             │
+  ├─────┼───────────────┼──────────────────────────────┼───────────┼───────────────┤
+  │ 1   │ 0             │ count=0 → candidate baru = 1 │ 1         │ 1             │
+  ├─────┼───────────────┼──────────────────────────────┼───────────┼───────────────┤
+  │ 4   │ 1             │ 4≠1 → lawan                  │ 1         │ 0             │
+  ├─────┼───────────────┼──────────────────────────────┼───────────┼───────────────┤
+  │ 1   │ 0             │ count=0 → candidate baru = 1 │ 1         │ 1             │
+  ├─────┼───────────────┼──────────────────────────────┼───────────┼───────────────┤
+  │ 1   │ 1             │ 1=1 → dukung                 │ 1         │ 2             │
+  └─────┴───────────────┴──────────────────────────────┴───────────┴───────────────┘
+
+  Hasil akhir: candidate = 1 ✓
+
 */
