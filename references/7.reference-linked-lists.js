@@ -2,7 +2,7 @@
 LINKED LISTS — REFERENCE
 
 A linked list is a chain of nodes. Each node holds a value and a pointer
-to the next node. The last node points to null.
+to the next node. The last node points to null. Linked list is a dynamic data tructure so it has no problem growing and shrinking.
 
   head
    ↓
@@ -15,6 +15,11 @@ Why use it over an array?
   No shifting elements around
   Downside: no random access — searching is always O(n)
 
+There are 2 types:
+  - Singly: contains next pointer to the next node
+  - Doubly: contains next pointer to the next and previous pointer to the previous node
+  - Circular: similar to singly but instead of the tail / last node point to null, rather it points back to 1st node
+  
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 NODE STRUCTURE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
