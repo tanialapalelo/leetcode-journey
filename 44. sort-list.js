@@ -290,7 +290,7 @@ The classic merge sort idea, adapted to nodes-and-pointers instead of
 array slices:
 
   1. SPLIT: find the middle node with slow/fast pointers (same trick as
-     "40. Middle of the Linked List" in this repo), then physically cut
+     "48. Middle of the Linked List" in this repo), then physically cut
      the list into two independent lists by setting `slow.next = null`.
 
   2. RECURSE: sort each half completely on its own by calling
@@ -420,7 +420,7 @@ Ide merge sort klasik, disesuaikan buat node-dan-pointer, bukan potongan
 array:
 
   1. SPLIT: cari node tengah pakai slow/fast pointer (trik yang sama
-     kayak "40. Middle of the Linked List" di repo ini), terus benar-benar
+     kayak "48. Middle of the Linked List" di repo ini), terus benar-benar
      potong list-nya jadi dua list independen dengan `slow.next = null`.
 
   2. REKURSI: sortir masing-masing setengah bagian itu sendiri-sendiri

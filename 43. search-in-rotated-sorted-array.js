@@ -188,7 +188,7 @@ structure applies: the array is two sorted runs glued together, e.g.
     sorted     sorted
    (bigger)   (smaller, wrapped around)
 
-The SAME crucial fact from problem 40 still holds here:
+The SAME crucial fact from problem 42 still holds here:
   AT ANY point while narrowing [left..right], AT LEAST ONE of the two
   halves (left..mid or mid..right) is fully sorted (no rotation point
   inside it).
@@ -217,7 +217,7 @@ Every iteration does 3 things, in order:
      not smaller/equal), so LEFT half is the clean, sorted one. Otherwise
      (nums[left] > nums[mid]), the rotation point is inside left..mid, which
      means RIGHT half (mid..right) must be the clean, sorted one instead.
-     (This is the exact same left/mid comparison from problem 40's video
+     (This is the exact same left/mid comparison from problem 42's video
      approach -- same reasoning, reused here.)
 
   3. Ask: "is target inside the SORTED half's value range?"
@@ -244,7 +244,7 @@ Every iteration does 3 things, in order:
   Space: O(1) -- just a few variables.
 
   Note on `mid = left + Math.floor((right - left) / 2)`: same overflow-safe
-  reordering discussed in problem 39/40's notes -- mathematically identical
+  reordering discussed in problem 41/42's notes -- mathematically identical
   to `Math.floor((left + right) / 2)`, just computed via a small
   intermediate value ((right - left)) instead of a potentially large one
   (left + right).
@@ -268,7 +268,7 @@ jadi satu, contoh:
     sorted     sorted
    (lebih besar) (lebih kecil, hasil wrap)
 
-Fakta PENTING yang sama dari soal 40 tetap berlaku di sini:
+Fakta PENTING yang sama dari soal 42 tetap berlaku di sini:
   DI TITIK MANAPUN saat mempersempit [left..right], SETIDAKNYA SATU dari
   dua bagian (left..mid atau mid..right) pasti sorted penuh (nggak ada
   titik rotasi di dalamnya).
@@ -298,7 +298,7 @@ Tiap iterasi ngelakuin 3 hal, urutannya:
      bersih/sorted. Kalau nggak (nums[left] > nums[mid]), titik rotasinya
      ada di dalam left..mid, artinya bagian KANAN (mid..right) yang
      pasti bersih/sorted. (Ini persis perbandingan left/mid yang sama
-     dari approach video di soal 40 -- alasan yang sama, dipakai ulang
+     dari approach video di soal 42 -- alasan yang sama, dipakai ulang
      di sini.)
 
   3. Tanya: "apakah target ada di dalam rentang nilai bagian yang SORTED?"
@@ -326,7 +326,7 @@ Tiap iterasi ngelakuin 3 hal, urutannya:
   Space: O(1) -- cuma beberapa variabel.
 
   Catatan soal `mid = left + Math.floor((right - left) / 2)`: pola
-  overflow-safe yang sama kayak yang dibahas di catatan soal 39/40 --
+  overflow-safe yang sama kayak yang dibahas di catatan soal 41/42 --
   secara matematis identik sama `Math.floor((left + right) / 2)`, cuma
   dihitung lewat angka sementara yang kecil ((right - left)) bukannya
   angka sementara yang berpotensi besar (left + right).

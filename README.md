@@ -47,8 +47,20 @@ Currently following a structured course and building understanding step-by-step.
 | 36   | Merge Sorted Array                                      | Easy   | Array, Two Pointers                        |
 | 37   | Sort Colors                                             | Medium | Array, Two Pointers, Dutch National Flag   |
 | 38   | Majority Element                                        | Easy   | Array, Boyer-Moore Voting                  |
-| 39   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
-| 40   | Middle of the Linked List                               | Easy   | Linked List, Fast & Slow Pointers          |
+| 41   | Search a 2D Matrix                                      | Medium | Binary Search                              |
+| 42   | Find Minimum in Rotated Sorted Array                    | Medium | Binary Search                              |
+| 43   | Search in Rotated Sorted Array                          | Medium | Binary Search                              |
+| 44   | Sort List                                               | Medium | Linked List, Merge Sort                    |
+| 45   | Largest Number                                          | Medium | Greedy, Custom Comparator Sort             |
+| 46   | Koko Eating Bananas                                     | Medium | Binary Search on Answer                    |
+| 47   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
+| 48   | Middle of the Linked List                               | Easy   | Linked List, Fast & Slow Pointers          |
+
+> Numbers 39 and 40 are intentionally left open — reserved for two more course/video
+> problems not yet solved. Reverse Linked List and Middle of the Linked List were
+> renumbered to 47-48 to make room for them, since they'd originally collided with
+> Search a 2D Matrix and Find Minimum in Rotated Sorted Array (added from a
+> different playlist using the same next-available numbers by mistake).
 
 ## Patterns Covered
 
@@ -61,15 +73,17 @@ Currently following a structured course and building understanding step-by-step.
 - **Binary Search** — classic, find bounds, sorted array variants
 - **Dutch National Flag** — three-pointer single-pass partitioning into three regions
 - **Boyer-Moore Voting** — O(1) space majority element via vote cancellation
-- **Linked List** — traversal, reversal, fast & slow pointers
+- **Linked List** — traversal, reversal, fast & slow pointers, merge sort (top-down and bottom-up)
+- **Binary Search on Answer** — search over the space of possible answers using a monotonic feasibility check, not over array indices
+- **Greedy / Custom Comparator Sort** — exchange-argument sorting for optimal arrangement problems
 
 ## Practice Order (By Category)
 
-The table above is ordered by **when I solved it** (matches the course/video order) — that numbering is append-only, so file names never get renamed or moved into folders as new problems are added.
+The table above is ordered by **when I solved it** (matches the course/video order). Numbering is flat and append-only going forward — file names shouldn't get renamed once added. (One collision from an earlier renumbering did get fixed by moving two files to 47-48; see the note above.)
 
 When practicing from a different list (grouped by topic instead of by video), use this table instead. It's just a second view over the same files, grouped by pattern.
 
-> New problem from another playlist that isn't solved yet? Keep appending it to the repo with the next sequential number in the existing flat naming scheme (e.g. `41. maximum-subarray.js`), then add one row here and one row to the table above.
+> New problem from another playlist that isn't solved yet? Check `ls *.js | sort -V` for the actual highest number in use first, then keep appending to the repo with the next sequential number in the existing flat naming scheme (e.g. `49. maximum-subarray.js`), then add one row here and one row to the table above.
 
 ### Arrays & Hashing
 
@@ -86,7 +100,7 @@ When practicing from a different list (grouped by topic instead of by video), us
 | First Missing Positive | Hard | [12. first-missing-positive.js](./12.%20first-missing-positive.js) |
 | Minimum Distance to the Target Element | Easy | [17. minimum-distance-to-the-target-element.js](./17.%20minimum-distance-to-the-target-element.js) |
 | Two Furthest Houses With Different Colors | Easy | [20. two-furthest-houses-with-different-colors.js](./20.%20two-furthest-houses-with-different-colors.js) |
-| Majority Element | Easy | [38. majority-element.js](./39.%20majority-element.js) |
+| Majority Element | Easy | [38. majority-element.js](./38.%20majority-element.js) |
 
 ### Two Pointers
 
@@ -121,13 +135,24 @@ When practicing from a different list (grouped by topic instead of by video), us
 |---|---|---|
 | Binary Search | Easy | [34. binary-search.js](./34.%20binary-search.js) |
 | Find First and Last Position of Element in Sorted Array | Medium | [35. find-first-and-last-position-of-element-in-sorted-array.js](./35.%20find-first-and-last-position-of-element-in-sorted-array.js) |
+| Search a 2D Matrix | Medium | [41. search-a-2d-matrix.js](./41.%20search-a-2d-matrix.js) |
+| Find Minimum in Rotated Sorted Array | Medium | [42. find-minimum-in-rotated-sorted-array.js](./42.%20find-minimum-in-rotated-sorted-array.js) |
+| Search in Rotated Sorted Array | Medium | [43. search-in-rotated-sorted-array.js](./43.%20search-in-rotated-sorted-array.js) |
+| Koko Eating Bananas | Medium | [46. koko-eating-bananas.js](./46.%20koko-eating-bananas.js) |
 
 ### Linked List
 
 | Problem | Difficulty | File |
 |---|---|---|
-| Middle of the Linked List | Easy | [40. middle-linked-list.js](./38.%20middle-linked-list.js) |
-| Reverse Linked List | Easy | [39. reverse-linked-list.js](./40.%20reverse-linked-list.js) |
+| Middle of the Linked List | Easy | [48. middle-linked-list.js](./48.%20middle-linked-list.js) |
+| Reverse Linked List | Easy | [47. reverse-linked-list.js](./47.%20reverse-linked-list.js) |
+| Sort List | Medium | [44. sort-list.js](./44.%20sort-list.js) |
+
+### Greedy / Sorting
+
+| Problem | Difficulty | File |
+|---|---|---|
+| Largest Number | Medium | [45. largest-number.js](./45.%20largest-number.js) |
 
 ### Math & String
 
