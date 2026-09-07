@@ -58,17 +58,29 @@ Currently following a structured course and building understanding step-by-step.
 | 49   | Linked List Cycle                                       | Easy   | Linked List, Fast & Slow Pointers          |
 | 50   | Merge Two Sorted Lists                                  | Easy   | Linked List, Dummy Head Node               |
 | 51   | Remove Nth Node From End of List                        | Medium | Linked List, Two Pointers, Dummy Head Node |
+| 53   | Valid Parentheses (redo, interview prep)                | Easy   | Stack                                      |
+| 54   | Min Stack (redo, interview prep)                        | Medium | Stack, Design                              |
 | 59   | Valid Parentheses                                       | Easy   | Stack                                      |
 | 60   | Min Stack                                               | Medium | Stack, Design                              |
 | 61   | Max Stack                                               | Hard   | Stack, Design                              |
 | 62   | Daily Temperatures                                      | Medium | Monotonic Stack                            |
 | 63   | Car Fleet                                               | Medium | Sorting, Monotonic Stack                   |
+| 65   | Evaluate Reverse Polish Notation                        | Medium | Stack                                      |
+| 66   | Minimum Remove to Make Valid Parentheses                | Medium | Stack                                      |
+| 68   | Implement Queue using Stacks                            | Easy   | Stack, Queue, Design, Amortized Analysis   |
+| 69   | Implement Stack using Queues                            | Easy   | Queue, Stack, Design                       |
 
-> Numbers 39 and 40 are intentionally left open — reserved for two more course/video
+> Numbers 39 and 40 are intentionally left open, reserved for two more course/video
 > problems not yet solved. Reverse Linked List and Middle of the Linked List were
 > renumbered to 47-48 to make room for them, since they'd originally collided with
 > Search a 2D Matrix and Find Minimum in Rotated Sorted Array (added from a
 > different playlist using the same next-available numbers by mistake).
+>
+> Numbers 53 and 54 revisit Valid Parentheses (LeetCode 20) and Min Stack
+> (LeetCode 155), already solved earlier at 59 and 60, as a second pass focused on
+> interview-style explanation (clarifying questions, naive vs optimal approaches,
+> time/space complexity) done for Kredivo SDE2 interview prep. Kept as separate
+> files instead of merged or renumbered, per the flat append-only numbering rule.
 
 ## Patterns Covered
 
@@ -86,6 +98,7 @@ Currently following a structured course and building understanding step-by-step.
 - **Greedy / Custom Comparator Sort** — exchange-argument sorting for optimal arrangement problems
 - **Stack** — LIFO push/pop, matching/nested structures, design problems (Min/Max Stack)
 - **Monotonic Stack** — maintaining an increasing/decreasing stack to answer "next greater/smaller" style questions in O(n)
+- **Queue**: FIFO enqueue/dequeue, implementing one structure using another (queue from two stacks, stack from queues), amortized time analysis
 
 ## Practice Order (By Category)
 
@@ -179,15 +192,21 @@ When practicing from a different list (grouped by topic instead of by video), us
 | Encode and Decode Strings | Medium | [30. encode-and-decode-string.js](./30.%20encode-and-decode-string.js) |
 | Text Justification | Hard | [33. text-justification.js](./33.%20text-justification.js) |
 
-### Stacks
+### Stacks & Queues
 
 | Problem | Difficulty | File |
 |---|---|---|
 | Valid Parentheses | Easy | [59. valid-paratheses.js](./59.%20valid-paratheses.js) |
+| Valid Parentheses (redo, interview prep) | Easy | [53. valid-parentheses.js](./53.%20valid-parentheses.js) |
 | Min Stack | Medium | [60. min-stack.js](./60.%20min-stack.js) |
+| Min Stack (redo, interview prep) | Medium | [54. min-stack.js](./54.%20min-stack.js) |
 | Max Stack | Hard | [61. max-stack.js](./61.%20max-stack.js) |
 | Daily Temperatures | Medium | [62. daily temperatures.js](./62.%20daily%20temperatures.js) |
 | Car Fleet | Medium | [63. car-fleet.js](./63.%20car-fleet.js) |
+| Evaluate Reverse Polish Notation | Medium | [65. evaluate-reverse-polish-notation.js](./65.%20evaluate-reverse-polish-notation.js) |
+| Minimum Remove to Make Valid Parentheses | Medium | [66. minimum-remove-to-make-valid-parentheses.js](./66.%20minimum-remove-to-make-valid-parentheses.js) |
+| Implement Queue using Stacks | Easy | [68. implement-queue-using-stacks.js](./68.%20implement-queue-using-stacks.js) |
+| Implement Stack using Queues | Easy | [69. implement-stack-using-queues.js](./69.%20implement-stack-using-queues.js) |
 
 ### Matrix / Misc
 
