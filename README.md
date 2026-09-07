@@ -58,6 +58,11 @@ Currently following a structured course and building understanding step-by-step.
 | 49   | Linked List Cycle                                       | Easy   | Linked List, Fast & Slow Pointers          |
 | 50   | Merge Two Sorted Lists                                  | Easy   | Linked List, Dummy Head Node               |
 | 51   | Remove Nth Node From End of List                        | Medium | Linked List, Two Pointers, Dummy Head Node |
+| 59   | Valid Parentheses                                       | Easy   | Stack                                      |
+| 60   | Min Stack                                               | Medium | Stack, Design                              |
+| 61   | Max Stack                                               | Hard   | Stack, Design                              |
+| 62   | Daily Temperatures                                      | Medium | Monotonic Stack                            |
+| 63   | Car Fleet                                               | Medium | Sorting, Monotonic Stack                   |
 
 > Numbers 39 and 40 are intentionally left open — reserved for two more course/video
 > problems not yet solved. Reverse Linked List and Middle of the Linked List were
@@ -79,6 +84,8 @@ Currently following a structured course and building understanding step-by-step.
 - **Linked List** — traversal, reversal, fast & slow pointers, merge sort (top-down and bottom-up), dummy head nodes, Floyd's cycle detection
 - **Binary Search on Answer** — search over the space of possible answers using a monotonic feasibility check, not over array indices
 - **Greedy / Custom Comparator Sort** — exchange-argument sorting for optimal arrangement problems
+- **Stack** — LIFO push/pop, matching/nested structures, design problems (Min/Max Stack)
+- **Monotonic Stack** — maintaining an increasing/decreasing stack to answer "next greater/smaller" style questions in O(n)
 
 ## Practice Order (By Category)
 
@@ -172,6 +179,16 @@ When practicing from a different list (grouped by topic instead of by video), us
 | Encode and Decode Strings | Medium | [30. encode-and-decode-string.js](./30.%20encode-and-decode-string.js) |
 | Text Justification | Hard | [33. text-justification.js](./33.%20text-justification.js) |
 
+### Stacks
+
+| Problem | Difficulty | File |
+|---|---|---|
+| Valid Parentheses | Easy | [59. valid-paratheses.js](./59.%20valid-paratheses.js) |
+| Min Stack | Medium | [60. min-stack.js](./60.%20min-stack.js) |
+| Max Stack | Hard | [61. max-stack.js](./61.%20max-stack.js) |
+| Daily Temperatures | Medium | [62. daily temperatures.js](./62.%20daily%20temperatures.js) |
+| Car Fleet | Medium | [63. car-fleet.js](./63.%20car-fleet.js) |
+
 ### Matrix / Misc
 
 | Problem | Difficulty | File |
@@ -196,6 +213,7 @@ Read them in this order — each one builds on the previous.
 | 9     | `9.reference-trees-and-graphs.js`           | DFS/BFS, tree traversals, grid problems                 |
 | 10    | `10.reference-heaps.js`                   | Min-heap, top K pattern, heap vs sort                   |
 | 11    | `11.reference-dynamic-programming.js`    | Memoization vs tabulation, 1D and 2D DP                 |
+| 12    | `12.reference-prefix-and-suffix.js`      | Prefix/suffix decomposition, "except self" pattern      |
 
 > Start with Big-O (#1) — everything else references it.
 > Read #4 and #5 after solving a few Two Pointer / Sliding Window problems so the patterns feel familiar.
