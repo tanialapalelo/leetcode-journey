@@ -60,25 +60,69 @@ All the values of position are unique.
  */
 
 /*
-UNDERSTANDING THE PROBLEM
+UNDERSTANDING THE PROBLEM - START HERE, NO MATH YET
 
-Every car is driving TOWARD `target`. A car can never pass the car ahead
-of it - if it's faster, it just catches up and then travels stuck behind
-it at the slower car's speed (they become one "fleet"). A fleet's speed is
-always the SLOWEST car in it, because nobody behind can pass through.
+Picture a ONE-LANE road. Every car drives toward the same finish line,
+`target` (say, mile 12). `position[i]` = where car i starts. `speed[i]` =
+how fast it drives. THE RULE THAT MAKES THIS PROBLEM WEIRD: nobody can
+overtake anybody, ever - it's one lane.
 
-Key trick: compute time[i] = (target - position[i]) / speed[i] for every
-car - this is how long car i would take to reach target IF NOTHING was
-ever in its way. This lets us reason purely with numbers instead of
-simulating movement second by second:
-  - if a car's own time is SMALLER than the time of the car/fleet ahead of
-    it, it would reach target sooner - but it CAN'T pass, so it's forced to
-    slow down and merge into that fleet (they arrive together).
-  - if a car's own time is LARGER than every fleet ahead of it, it never
-    catches up to any of them in time - it arrives alone, as its own fleet.
+So what happens if a fast car is BEHIND a slower car? It drives up right
+behind it... and then is stuck. It can't pass, so from that point on it's
+forced to crawl along at the SLOWER car's speed, glued right behind it,
+like a mini traffic jam. That "car + whatever's stuck behind it" group is
+called a FLEET. A fleet always moves at the speed of its slowest member,
+because everyone behind it is trapped by it.
 
-So "how many fleets arrive" = "how many cars are strictly slower (bigger
-own-time) than every single car ahead of them".
+The question "how many fleets reach the finish line" really just means:
+"how many separate, never-merging groups end up on the road" - because
+once cars merge into a fleet, they stay merged (a fleet can never speed
+back up or split apart again).
+
+Let's physically trace Example 1 on a number line from 0 to 12, using the
+actual positions/speeds (this is the SAME reasoning the official example
+explanation uses, just slowed down step by step):
+
+  position:  0    3        5              8        10         (target: 12)
+  speed:    (1)  (3)      (1)            (4)        (2)
+
+- Car at 10 (speed 2) and car at 8 (speed 4): the car at 8 is BEHIND and
+  FASTER. Does it catch up before mile 12? Car at 10 needs (12-10)/2 = 1
+  hour. Car at 8 needs (12-8)/4 = 1 hour too. They arrive at the exact
+  same moment -> they meet right at the finish line -> 1 fleet.
+
+- Car at 5 (speed 1) and car at 3 (speed 3): the car at 3 is behind and
+  much faster. It physically catches up to the car at 5 at some point
+  BEFORE mile 12 (the problem says mile 6), then gets stuck behind it,
+  crawling the rest of the way at speed 1 -> 1 fleet.
+
+- Car at 0 (speed 1): nothing is behind it to get stuck on, and it's not
+  fast enough to catch anyone ahead of it either -> travels alone -> its
+  own fleet.
+
+Total distinct fleets: {10, 8}, {5, 3}, {0} -> 3. Matches the example.
+
+WHY WE DON'T JUST SIMULATE THIS MINUTE-BY-MINUTE:
+Physically tracing positions like above works, but doing it by literally
+moving every car forward tick by tick and checking collisions would be
+painfully slow and messy to code. We need a way to answer "does car A ever
+get stuck behind car B?" using pure arithmetic instead of a simulation.
+
+THE KEY TRICK: compute time[i] = (target - position[i]) / speed[i] for
+every car - "how long would car i take to reach the finish line if the
+road were completely empty and nothing ever blocked it". This one number
+secretly encodes everything we need:
+  - if a car's own time is SMALLER OR EQUAL to the time of whatever is
+    directly ahead of it, it either arrives at the exact same time (like
+    10 & 8 above) or would arrive earlier if unobstructed - but it CAN'T
+    pass, so in reality it's forced to slow down and get stuck in that
+    fleet instead.
+  - if a car's own time is STRICTLY LARGER than everything ahead of it,
+    even in the best case (empty road) it would still arrive after
+    everyone ahead - it never catches anyone, so it's a fleet of its own.
+
+So "how many fleets arrive" = "how many cars have a strictly bigger
+own-time than every single car ahead of them".
 
 WALKTHROUGH - Example 1: target=12, position=[10,8,0,5,3], speed=[2,4,1,1,3]
 
