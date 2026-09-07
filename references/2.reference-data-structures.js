@@ -5,6 +5,66 @@ A data structure is a way of organizing data so you can use it efficiently.
 Choosing the right one often determines whether your solution is O(n) or O(n²).
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+0. VALUE vs REFERENCE — the split that explains everything below
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Before any specific structure: JavaScript only has TWO categories of
+values, and every data structure below falls into one of them. This is
+the single idea that explains why assigning/passing an array "shares" it
+but assigning/passing a string doesn't -- and why linked list tricks like
+a dummy head node, or fast/slow pointers, work at all.
+
+PRIMITIVES — copied by VALUE, independent, immutable
+  string, number, boolean, null, undefined, bigint, symbol
+
+  let s1 = "hello";
+  let s2 = s1;
+  s2 = s2 + " world";
+  console.log(s1);   // "hello"        <- s1 untouched
+  console.log(s2);   // "hello world"  <- only s2 changed
+
+  `s2 = s1` copies the actual value into a new independent box. After
+  that, s1 and s2 have nothing to do with each other. "Modifying" a
+  string doesn't mutate it in place -- it builds a brand new string and
+  reassigns the variable to that new one. The old string never changes.
+
+OBJECTS — copied by REFERENCE (an address), shared, mutable
+  Array, plain {} objects, Map, Set, Date, functions, and any class /
+  constructor you define yourself (ListNode included)
+
+  let a1 = [1, 2, 3];
+  let a2 = a1;
+  a2.push(4);
+  console.log(a1);         // [1, 2, 3, 4]  <- a1 changed too!
+  console.log(a1 === a2);  // true          <- same object, two names
+
+  let node1 = new ListNode(1);
+  let node2 = node1;
+  node2.val = 777;
+  console.log(node1);         // ListNode { val: 777, next: null } <- changed!
+  console.log(node1 === node2); // true
+
+  `a2 = a1` copies the ADDRESS, not the array itself. a1 and a2 are now
+  two different variable names pointing at the exact same object in
+  memory -- mutating through either name is visible through the other,
+  because there's really only one array (or one Map, one Set, one custom
+  object) sitting there.
+
+THE ONE QUESTION TO ASK
+  "Was this made with {}, [], or `new SomeConstructor()`?"
+    -> yes: it's an OBJECT -> reference semantics, shared, mutable
+    -> no, it's a string/number/boolean/null/undefined -> PRIMITIVE
+       -> value semantics, independent, immutable
+
+  This is exactly why the dummy-head-node trick works in linked list
+  problems (see "50. merge-two-sorted-lists.js"): `let tail = dummy`
+  copies dummy's address into tail, so writing `tail.next = ...` while
+  tail still equals dummy writes directly into the shared node -- the
+  same reason `a2.push(4)` above changed what a1 sees. If ListNode were
+  a primitive instead of an object, none of the pointer tricks in this
+  repo's linked list problems (dummy heads, fast/slow pointers,
+  `curr.next = prev` reversal) would work at all.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1. ARRAY
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 Ordered collection. Access any element instantly by index.

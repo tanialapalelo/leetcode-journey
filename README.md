@@ -55,6 +55,9 @@ Currently following a structured course and building understanding step-by-step.
 | 46   | Koko Eating Bananas                                     | Medium | Binary Search on Answer                    |
 | 47   | Reverse Linked List                                     | Easy   | Linked List, Two Pointers, Recursion       |
 | 48   | Middle of the Linked List                               | Easy   | Linked List, Fast & Slow Pointers          |
+| 49   | Linked List Cycle                                       | Easy   | Linked List, Fast & Slow Pointers          |
+| 50   | Merge Two Sorted Lists                                  | Easy   | Linked List, Dummy Head Node               |
+| 51   | Remove Nth Node From End of List                        | Medium | Linked List, Two Pointers, Dummy Head Node |
 
 > Numbers 39 and 40 are intentionally left open — reserved for two more course/video
 > problems not yet solved. Reverse Linked List and Middle of the Linked List were
@@ -73,7 +76,7 @@ Currently following a structured course and building understanding step-by-step.
 - **Binary Search** — classic, find bounds, sorted array variants
 - **Dutch National Flag** — three-pointer single-pass partitioning into three regions
 - **Boyer-Moore Voting** — O(1) space majority element via vote cancellation
-- **Linked List** — traversal, reversal, fast & slow pointers, merge sort (top-down and bottom-up)
+- **Linked List** — traversal, reversal, fast & slow pointers, merge sort (top-down and bottom-up), dummy head nodes, Floyd's cycle detection
 - **Binary Search on Answer** — search over the space of possible answers using a monotonic feasibility check, not over array indices
 - **Greedy / Custom Comparator Sort** — exchange-argument sorting for optimal arrangement problems
 
@@ -83,7 +86,7 @@ The table above is ordered by **when I solved it** (matches the course/video ord
 
 When practicing from a different list (grouped by topic instead of by video), use this table instead. It's just a second view over the same files, grouped by pattern.
 
-> New problem from another playlist that isn't solved yet? Check `ls *.js | sort -V` for the actual highest number in use first, then keep appending to the repo with the next sequential number in the existing flat naming scheme (e.g. `49. maximum-subarray.js`), then add one row here and one row to the table above.
+> New problem from another playlist that isn't solved yet? Check `ls *.js | sort -V` for the actual highest number in use first, then keep appending to the repo with the next sequential number in the existing flat naming scheme (e.g. `52. maximum-subarray.js`), then add one row here and one row to the table above.
 
 ### Arrays & Hashing
 
@@ -147,6 +150,9 @@ When practicing from a different list (grouped by topic instead of by video), us
 | Middle of the Linked List | Easy | [48. middle-linked-list.js](./48.%20middle-linked-list.js) |
 | Reverse Linked List | Easy | [47. reverse-linked-list.js](./47.%20reverse-linked-list.js) |
 | Sort List | Medium | [44. sort-list.js](./44.%20sort-list.js) |
+| Linked List Cycle | Easy | [49. linked-list-cycle.js](./49.%20linked-list-cycle.js) |
+| Merge Two Sorted Lists | Easy | [50. merge-two-sorted-lists.js](./50.%20merge-two-sorted-lists.js) |
+| Remove Nth Node From End of List | Medium | [51. remove-nth-node-from-end-of-list.js](./51.%20remove-nth-node-from-end-of-list.js) |
 
 ### Greedy / Sorting
 
