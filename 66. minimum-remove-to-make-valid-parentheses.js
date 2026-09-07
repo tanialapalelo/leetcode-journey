@@ -120,9 +120,13 @@ s[i] is either '(' , ')', or lowercase English letter.
  *   rebuild skipping index 12 -> "lee(t(c)o)de"  matches expected output
  *
  * Time: O(n) - one pass to mark, one pass to rebuild.
- * Space: O(n) - stack + removal set + result array, all bounded by string
+ * Space: O(n) - stack + removal set + result string, all bounded by string
  *        length (same reasoning as Max Stack's two arrays: these genuinely
- *        scale with n, unlike a fixed-size lookup object).
+ *        scale with n, unlike a fixed-size lookup object). No array copy
+ *        of s is needed here since we only ever READ s[i] by index -
+ *        strings already support that, so unlike the brute force (which
+ *        mutates via splice and therefore needs a real array) this stays
+ *        with the original string.
  */
 
 /**
@@ -173,14 +177,13 @@ var minRemoveToMakeValidBruteForce = function (s) {
  * @return {string}
  */
 var minRemoveToMakeValidParentheses = function (s) {
-  const arr = s.split('');
   const stack = []; // indices of '(' still waiting for a matching ')'
   const toRemove = new Set();
 
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] === '(') {
+  for (let i = 0; i < s.length; i++) {
+    if (s[i] === '(') {
       stack.push(i);
-    } else if (arr[i] === ')') {
+    } else if (s[i] === ')') {
       if (stack.length > 0) {
         stack.pop(); // matched with the most recently opened '('
       } else {
@@ -189,14 +192,15 @@ var minRemoveToMakeValidParentheses = function (s) {
     }
   }
 
-  // any '(' left on the stack never found a match
+  // any '(' left on the stack never found a match, add remaingin unmatched opening parentheses indices to the set
   while (stack.length > 0) {
     toRemove.add(stack.pop());
   }
 
+  // build the result string
   let result = '';
-  for (let i = 0; i < arr.length; i++) {
-    if (!toRemove.has(i)) result += arr[i];
+  for (let i = 0; i < s.length; i++) {
+    if (!toRemove.has(i)) result += s[i];
   }
   return result;
 };
