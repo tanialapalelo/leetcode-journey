@@ -146,6 +146,18 @@ add and remove from the top.
 Use when: "undo" operations, matching brackets, DFS, tracking history.
 Problems: Valid Parentheses, Daily Temperatures, Largest Rectangle.
 
+HOW TO RECOGNIZE IT (problems rarely say "use a stack" outright):
+  - Keywords in the problem: "correct order", "matching pairs", "nested"
+    (something wraps/depends on something else).
+  - Walk a tricky example by hand and notice you keep asking "which one
+    must be resolved/closed first?" e.g. "([)]" — a counter alone can't
+    tell this is invalid (1 of each bracket, counts balance perfectly),
+    but tracking "the most recently opened, still-unclosed bracket" catches
+    it immediately. "Most recent unresolved item goes first" = LIFO.
+  - Self-check: "Do I need to remember the MOST RECENT unresolved item and
+    resolve it before older ones?" Yes → stack. If you only need counts,
+    not order → a counter/hashmap is enough.
+
   push (add to top)   O(1)
   pop (remove top)    O(1)
   peek (read top)     O(1)
