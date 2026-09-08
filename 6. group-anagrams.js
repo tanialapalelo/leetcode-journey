@@ -83,8 +83,23 @@ var groupAnagrams = function(strs) {
 
 
 // APPROACH 2 — Count letters (a–z) to get the key  ← optimal
-// Time: O(N · K)   — just iterating characters, no sorting
+//
+// N = jumlah kata di strs (strs.length)
+// K = panjang kata terpanjang di strs (strs[i].length)
+//
+// Time: O(N · K)
+//   - buat setiap kata (N kata), kita loop tiap karakternya (sampai K karakter)
+//     → itu N * K operasi buat isi count[]
+//   - count.join('#') juga O(26) karena count selalu ukuran tetap (26 huruf),
+//     jadi diabaikan (dianggap konstan, gak ikut skala sama N atau K)
+//   - dibanding APPROACH 1 yang sort tiap kata (K log K per kata), approach ini
+//     cuma iterasi biasa (K per kata) → makanya lebih cepat, gak ada log K
+//
 // Space: O(N · K)
+//   - map nyimpen semua kata asli di dalam array grupnya, total karakter yang
+//     disimpan across semua grup ≈ N * K (rata-rata panjang kata dikali jumlah kata)
+//   - count[] sendiri cuma O(26) per kata (konstan), jadi gak nambah signifikan
+//   - array count dan key string dibuang tiap iterasi selesai (gak nambah ke space total)
 
 var groupAnagrams = function(strs) {
     const map = new Map();
@@ -101,7 +116,8 @@ var groupAnagrams = function(strs) {
             //   'b' → 98-97 = 1  (slot 1)
             //   'z' → 122-97 = 25 (slot 25)
             // charCodeAt(0) is just JS's way of getting the ASCII number of a character
-            count[char.charCodeAt(0) - 97]++;
+            count[char.charCodeAt(0) - 97]++; // ini yang di store bukan hurufnya tapi langsung berapa banyak yang muncul dari tiap huruf 
+            // makanya char.charCodeAt(0)-97 misalnya kan 0 (index dari a), nah jadinya bisa 1 atau 2 atau 3 sesuai ++ nya 
         }
 
         // arrays can't be map keys directly (compared by reference, not value)

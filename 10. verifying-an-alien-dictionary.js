@@ -35,6 +35,30 @@ All characters in words[i] and order are English lowercase letters.
 */
 
 // ANSWER
+
+/*
+MENTAL MODEL — kenapa harus nested for?
+
+Masalah ini punya DUA dimensi yang harus dicek, jadi butuh dua loop variable:
+  1) dimensi "pasangan kata" — words[i] dibandingkan dengan words[i+1]
+     (loop luar, variable i)
+  2) dimensi "posisi karakter di dalam satu pasangan itu" — bandingin
+     words[i].charAt(c) dengan words[i+1].charAt(c) satu-satu dari kiri
+     (loop dalam, variable c)
+
+Dua dimensi ini gak bisa digabung jadi satu loop flat, karena begitu pindah
+ke pasangan berikutnya (i+1 vs i+2), index karakter c harus RESET ke 0 lagi
+(pasangan baru, mulai bandingin dari karakter pertama lagi). Itu artinya c
+selalu "terikat" ke i yang sedang aktif — hubungan ini paling natural ditulis
+sebagai nested for, bukan satu loop panjang.
+
+Loop dalam juga langsung BREAK begitu ketemu karakter yang beda (atau return
+false kalau kepanjangan/kekurangan huruf dibanding kata berikutnya) — gak
+perlu lanjut cek sisa karakter di pasangan itu karena hasilnya udah pasti.
+Itu sebabnya walau strukturnya nested, total kerja tetap sedikit (lihat
+complexity di bawah), bukan dikali dua tingkat.
+*/
+
 /**
  * @param {string[]} words
  * @param {string} order
@@ -58,8 +82,8 @@ var isAlienSorted = function(words, order) {
 
          // if the character not the same as the next word's char then compare
          if(words[i].charAt(c) != words[i+1].charAt(c)){
-            const currLetter = orderMap.get(words[i].charAt(c));
-            const nextLetter = orderMap.get(words[i+1].charAt(c));
+            const currLetter = orderMap.get(words[i].charAt(c)); // urutan huruf sekarang
+            const nextLetter = orderMap.get(words[i+1].charAt(c)); // urutan huruf di kata berikutnya
             console.log(c,"currLetter",currLetter)
             console.log(c,"nextLetter",nextLetter)
             if(nextLetter < currLetter) return false; //there's missmatch, example word (current) and world (next), d (current) is 4 and l (next) is 3
@@ -72,9 +96,34 @@ var isAlienSorted = function(words, order) {
     
 };
 
-// Time complexity: O(total characters across words) - adjacent word pairs are compared
-// character by character, but the inner loop breaks as soon as a differing character is found.
-// Space complexity: O(1) extra - orderMap always holds at most 26 entries.
+// Time complexity: O(N · K)
+//   N = words.length (jumlah kata), K = panjang kata terpanjang
+//   - loop luar jalan (N - 1) kali, satu kali per pasangan kata bersebelahan
+//   - loop dalam jalan MAKSIMAL K kali per pasangan, tapi break secepatnya begitu
+//     ketemu karakter beda atau kata berikutnya lebih pendek (prefix case)
+//   - worst case (semua kata mirip dan gak pernah beda sampai akhir) loop dalam
+//     jalan penuh K kali per pasangan -> total N*K, ini sama dengan "total
+//     karakter yang di-scan", bukan N*K dikali ekstra
+//   - jadi walau ada 2 loop, biayanya tetap linear terhadap ukuran input, bukan
+//     kuadratik -- karena loop dalam gak pernah mengulang kerja yang sama
+//
+// KENAPA INI BUKAN O(N²)? (kesalahpahaman umum: "nested loop = pasti O(n kuadrat)")
+//   Nested loop cuma jadi O(n²) kalau KEDUA loop jalan di dimensi ukuran yang
+//   SAMA (misal: for i in N, for j in N -- bandingin SETIAP kata ke SETIAP
+//   kata lain, kayak bubble sort naif).
+//   Di sini loop luar (i) dan loop dalam (c) jalan di DUA dimensi yang BEDA:
+//     - i dibatasi N (jumlah kata) -- dan cuma bandingin pasangan BERSEBELAHAN
+//       (i vs i+1), BUKAN semua pasangan kata (i vs semua j)
+//     - c dibatasi K (panjang kata terpanjang) -- dimensi yang independen dari N
+//   Karena cuma pasangan bersebelahan yang dicek (bukan semua N² pasangan),
+//   dan K gak ikut membesar seiring N (dibatasi maks 20 di constraint), hasil
+//   perkaliannya N*K, bukan N*N. Sama seperti cek array terurut: loop sekali
+//   bandingin arr[i] vs arr[i+1] itu O(n), bukan O(n²) walau ada perbandingan
+//   berpasangan, karena cuma tetangga yang dicek, bukan semua kombinasi.
+//
+// Space complexity: O(1) extra
+//   - orderMap selalu isi 26 entry (jumlah huruf alfabet), gak ikut membesar
+//     seiring N atau K, jadi dianggap konstan terhadap ukuran input
 
 /* NOTE FROM GPT
 
