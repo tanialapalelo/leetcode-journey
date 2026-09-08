@@ -66,9 +66,51 @@ romainNumbers.set("C",100);
 romainNumbers.set("D",500);
 romainNumbers.set("M",1000);
 
+/*
+MENTAL MODEL
+
+Aturan normal: angka romawi dibaca besar ke kecil, tinggal DIJUMLAH semua
+("VI" = V + I = 5 + 1 = 6).
+
+Tapi ada kasus "subtractive pair" (IV, IX, XL, XC, CD, CM) di mana simbol
+KECIL ditaruh SEBELUM simbol besar, artinya harus DIKURANG bukan dijumlah
+("IV" = 4, bukan V + I = 6).
+
+Insight kuncinya: cara membedakan "harus jumlah" vs "harus kurang" cuma
+dengan BANDINGIN nilai karakter sekarang dengan karakter SETELAHNYA:
+  - current < next  → ini bagian dari subtractive pair → current dikurang
+  - current >= next → pola normal → current dijumlah
+
+Kenapa cukup lihat SATU karakter ke depan (bukan mundur)? Karena satu
+subtractive pair itu selalu cuma 2 karakter (misal "IV"), dan simbol kecil
+SELALU di posisi pertama pasangan itu. Begitu kita proses simbol kecil itu
+(dengan cara dikurang), simbol besar pasangannya nanti diproses normal
+(dijumlah) di iterasi berikutnya — gak perlu di-skip manual.
+
+WALKTHROUGH — s = "MCMXCIV" (harusnya jadi 1994)
+
+  i | s[i] | current | next | current < next? | aksi         | total
+  --|------|---------|------|------------------|--------------|-------
+  0 | M    | 1000    | C=100| tidak            | total += 1000| 1000
+  1 | C    | 100     | M=1000| ya              | total -= 100 | 900
+  2 | M    | 1000    | X=10 | tidak            | total += 1000| 1900
+  3 | X    | 10      | C=100| ya               | total -= 10  | 1890
+  4 | C    | 100     | I=1  | tidak            | total += 100 | 1990
+  5 | I    | 1       | V=5  | ya               | total -= 1   | 1989
+  6 | V    | 5       | (habis, i+1 di luar batas) | -   | total += 5   | 1994
+
+  Perhatikan "CM" (i=1) dan "XC" (i=3): simbol kecil (C, X) ketemu simbol
+  besar setelahnya (M, C) → dikurang. Simbol besarnya (M di i=2, C di i=4)
+  tetap diproses normal (dijumlah) di iterasi masing-masing karena dari sudut
+  pandang MEREKA, karakter setelahnya lebih kecil atau gak ada.
+
+  Karakter terakhir (i = s.length - 1) SELALU dijumlah, karena kondisi
+  `i+1 < s.length` gagal (gak ada karakter setelahnya buat dibandingkan).
+*/
+
 var romanToInt = function(s) {
     let total = 0;
-    for(i=0; i<s.length; i++){
+    for(let i=0; i<s.length; i++){
         const current = romainNumbers.get(s[i]);
         // because we want to compare now index to the next
         if(i+1 < s.length){
