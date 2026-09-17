@@ -233,9 +233,12 @@ Read them in this order — each one builds on the previous.
 | 10    | `10.reference-heaps.js`                   | Min-heap, top K pattern, heap vs sort                   |
 | 11    | `11.reference-dynamic-programming.js`    | Memoization vs tabulation, 1D and 2D DP                 |
 | 12    | `12.reference-prefix-and-suffix.js`      | Prefix/suffix decomposition, "except self" pattern      |
+| 13    | `13.reference-stacks.js`                 | LIFO ops, Valid Parentheses, Min/Max Stack, monotonic stack, RPN |
+| 14    | `14.reference-queues.js`                 | FIFO ops, BFS, multi-source BFS, queue from two stacks   |
 
 > Start with Big-O (#1) — everything else references it.
 > Read #4 and #5 after solving a few Two Pointer / Sliding Window problems so the patterns feel familiar.
+> Read #13 and #14 after solving the Stacks & Queues problems (53 to 69) so the patterns feel familiar.
 > Save DP (#11) for last — it's the hardest and needs everything before it.
 
 ## Study Method
