@@ -9,6 +9,19 @@ remove from the front, never from the middle.
                   ^front         ^back (add here)
   dequeue()  ->  [2, 3, 4]   returns 1 (removed from front)
 
+FLAVORS OF QUEUE covered in this file:
+  1-2. Plain queue, array-backed and linked-list-backed, used for BFS
+  3.   Multi-source BFS, seeding a plain queue with several starts
+  4.   Implement Queue using Stacks, a plain FIFO queue built a
+       different way
+  5.   Circular queue, a fixed-size array that wraps instead of shifts
+  6.   Deque, add/remove from BOTH ends, used for sliding window max
+
+Not a FIFO structure, but often confused with one:
+  Priority queue (heap), the item that comes out is whichever has the
+  highest priority, not whichever arrived first. See
+  10.reference-heaps.js for that one.
+
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 1. BASIC QUEUE OPS (array-backed)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -195,6 +208,140 @@ rotate the queue (dequeue and re-enqueue) size-1 times so the new
 element ends up at the front. That makes push O(n) but pop/top O(1).
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+5. CIRCULAR QUEUE (RING BUFFER), fixing shift()'s O(n) without a linked list
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Stays array-backed, but instead of physically removing index 0 on
+every dequeue, track a `front` index and move it forward instead.
+When `front` or `rear` walks off the end of the fixed-size array, it
+wraps back to index 0 with modulo, so freed slots get reused. That
+wraparound is the "circular" part: no shifting, no unbounded growth.
+
+Walkthrough, capacity 5, array [_,_,_,_,_], front=0, rear=-1, count=0:
+
+  enqueue(1): rear=0             -> [1,_,_,_,_]  count=1
+  enqueue(2): rear=1             -> [1,2,_,_,_]  count=2
+  enqueue(3): rear=2             -> [1,2,3,_,_]  count=3
+  dequeue():  returns 1, front=1 -> [_,2,3,_,_]  count=2
+  dequeue():  returns 2, front=2 -> [_,_,3,_,_]  count=1
+  enqueue(4): rear=3             -> [_,_,3,4,_]  count=2
+  enqueue(5): rear=4             -> [_,_,3,4,5]  count=3
+  enqueue(6): rear=(4+1)%5=0     -> [6,_,3,4,5]  count=4
+              wraps to index 0 because dequeue already freed it
+
+front === rear is ambiguous by itself (could mean empty OR full), so
+track `count` separately to tell the two apart.
+*/
+class CircularQueue {
+    constructor(capacity) {
+        this.data = new Array(capacity);
+        this.capacity = capacity;
+        this.front = 0;
+        this.rear = -1;
+        this.count = 0;
+    }
+
+    enqueue(val) {
+        if (this.count === this.capacity) return false; // full
+        this.rear = (this.rear + 1) % this.capacity;
+        this.data[this.rear] = val;
+        this.count++;
+        return true;
+    }
+
+    dequeue() {
+        if (this.count === 0) return undefined; // empty
+        const val = this.data[this.front];
+        this.front = (this.front + 1) % this.capacity;
+        this.count--;
+        return val;
+    }
+
+    peekFront() {
+        return this.count === 0 ? undefined : this.data[this.front];
+    }
+
+    isFull() {
+        return this.count === this.capacity;
+    }
+
+    isEmpty() {
+        return this.count === 0;
+    }
+}
+// enqueue / dequeue / peek: O(1)  Space: O(capacity), fixed and reused
+
+/*
+This is LeetCode 622, Design Circular Queue. Used anywhere a fixed-
+size rolling buffer fits: streaming data windows, producer/consumer
+buffers, round-robin CPU scheduling.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+6. DEQUE (DOUBLE-ENDED QUEUE), add/remove from either end
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+A deque relaxes the "front and back only" split even further: you can
+add or remove from EITHER end. It is not strictly FIFO or LIFO, it can
+act as both at once (a stack from one end, a queue from the other).
+
+  addFront / removeFront   (like a stack's push/pop)
+  addBack / removeBack     (like a queue's enqueue)
+
+JS arrays give you all four with push/pop (back) and unshift/shift
+(front), but only push/pop are truly O(1). unshift/shift are O(n) for
+the same contiguous-memory reason plain shift() is O(n) in section 1.
+A genuinely O(1)-at-both-ends deque needs a doubly linked list (head
+and tail pointers, each node has both next and prev) or a circular
+buffer with two moving ends.
+
+In practice, most interview solutions still use a plain array as a
+"deque" and lean on push/pop for the back plus shift for the front,
+because the deque stays capped at a small bounded size (like the
+window size k below), so the cost of each shift stays small.
+
+MONOTONIC DEQUE, Sliding Window Maximum
+Same core idea as the monotonic stack in 13.reference-stacks.js, but
+now the window can also lose its OLDEST element as it slides, so you
+need to remove from the front too, not just the back.
+
+Keep a deque of indices where nums[deque] stays decreasing, front to
+back. The front of the deque is always the max of the current window.
+
+  For each new index `right`:
+    1. Pop from the back while the new value is >= the back's value.
+       Anything smaller sitting in front of a bigger, later value can
+       never be the max again, so throw it away.
+    2. Push `right` onto the back.
+    3. If the front index has fallen out of the window (too old),
+       shift it off the front.
+    4. Once the window has reached size k, the front holds this
+       window's max.
+*/
+function maxSlidingWindow(nums, k) {
+    const result = [];
+    const deque = []; // stores indices, nums[deque] stays decreasing
+
+    for (let right = 0; right < nums.length; right++) {
+        while (deque.length > 0 && nums[deque[deque.length - 1]] <= nums[right]) {
+            deque.pop(); // remove weaker candidates from the back
+        }
+        deque.push(right);
+
+        const windowStart = right - k + 1;
+        if (deque[0] < windowStart) {
+            deque.shift(); // front index fell out of the window
+        }
+
+        if (right >= k - 1) {
+            result.push(nums[deque[0]]); // front is always the current max
+        }
+    }
+    return result;
+}
+// Time: O(n), each index is pushed and popped from the deque at most
+// once across the whole run (same amortized argument as monotonic stack)
+// Space: O(k)
+
+/*
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 PATTERNS & TIPS
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 - Queue = FIFO = spread outward evenly, layer by layer: BFS, shortest
@@ -212,9 +359,21 @@ PATTERNS & TIPS
 - "Amortized O(1)" does not mean every single call is O(1). It means
   the cost averages out to O(1) across many operations, even if
   occasional calls (like a transfer) are more expensive
+- Circular queue: fixed capacity, everything O(1), wraps via modulo
+  instead of shifting. Reach for it when the max size is known ahead
+  of time
+- Deque: add/remove both ends. Reach for it when a sliding window
+  needs to drop values from the FRONT as well as compare new ones at
+  the back (monotonic deque), not just push at one end
+- Priority queue (heap) is a different beast entirely: it is not
+  FIFO or LIFO at all, the highest-priority item always comes out
+  first regardless of insertion order. See 10.reference-heaps.js
 
 Complexities:
-  Array-backed:  enqueue O(1), dequeue O(n) (shift)
-  Linked-list-backed (head=front, tail=back): enqueue O(1), dequeue O(1)
-  Space: O(n)
+  Array-backed queue:      enqueue O(1), dequeue O(n) (shift)
+  Linked-list-backed queue (head=front, tail=back): enqueue O(1), dequeue O(1)
+  Circular queue (array, fixed capacity): enqueue/dequeue O(1)
+  Deque (doubly linked list): add/remove either end O(1)
+  Deque (plain array, capped size k): add/remove either end O(1) amortized
+  Space: O(n), or O(capacity) for a circular queue
 */
