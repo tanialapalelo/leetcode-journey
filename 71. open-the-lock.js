@@ -406,7 +406,7 @@ var openLock = function(deadends, target) {
                 if (visited.has(next)) continue;
                 if (next === target) return moves; // first time we touch it = shortest
                 visited.add(next); // mark when ADDED, not when processed
-                nextLevel.push(next);n
+                nextLevel.push(next);
             }
         }
 

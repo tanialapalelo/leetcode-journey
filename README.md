@@ -71,6 +71,7 @@ Currently following a structured course and building understanding step-by-step.
 | 69   | Implement Stack using Queues                            | Easy   | Queue, Stack, Design                       |
 | 70   | Design Circular Queue                                   | Medium | Queue, Design, Circular Buffer             |
 | 71   | Open the Lock                                           | Medium | BFS, Queue                                 |
+| 72   | Dota2 Senate                                            | Medium | Queue, Greedy, Simulation                  |
 
 > Numbers 39 and 40 are intentionally left open, reserved for two more course/video
 > problems not yet solved. Reverse Linked List and Middle of the Linked List were
@@ -100,7 +101,7 @@ Currently following a structured course and building understanding step-by-step.
 - **Greedy / Custom Comparator Sort** — exchange-argument sorting for optimal arrangement problems
 - **Stack** — LIFO push/pop, matching/nested structures, design problems (Min/Max Stack)
 - **Monotonic Stack** — maintaining an increasing/decreasing stack to answer "next greater/smaller" style questions in O(n)
-- **Queue**: FIFO enqueue/dequeue, implementing one structure using another (queue from two stacks, stack from queues), amortized time analysis, circular queue (ring buffer) with modulo wraparound
+- **Queue**: FIFO enqueue/dequeue, implementing one structure using another (queue from two stacks, stack from queues), amortized time analysis, circular queue (ring buffer) with modulo wraparound, two queues to simulate turn order (Dota2 Senate)
 - **BFS**: searching level by level for the fewest moves in an unweighted graph, visited set to avoid repeats, blocked states pre-marked as visited (Open the Lock)
 
 ## Practice Order (By Category)
@@ -212,6 +213,7 @@ When practicing from a different list (grouped by topic instead of by video), us
 | Implement Stack using Queues | Easy | [69. implement-stack-using-queues.js](./69.%20implement-stack-using-queues.js) |
 | Design Circular Queue | Medium | [70. design-circular-queue.js](./70.%20design-circular-queue.js) |
 | Open the Lock | Medium | [71. open-the-lock.js](./71.%20open-the-lock.js) |
+| Dota2 Senate | Medium | [72. dota2-senate.js](./72.%20dota2-senate.js) |
 
 ### Matrix / Misc
 
@@ -243,7 +245,7 @@ Read them in this order — each one builds on the previous.
 
 > Start with Big-O (#1) — everything else references it.
 > Read #4 and #5 after solving a few Two Pointer / Sliding Window problems so the patterns feel familiar.
-> Read #13 and #14 after solving the Stacks & Queues problems (53 to 71) so the patterns feel familiar.
+> Read #13 and #14 after solving the Stacks & Queues problems (53 to 72) so the patterns feel familiar.
 > Save DP (#11) for last — it's the hardest and needs everything before it.
 
 ## Study Method
