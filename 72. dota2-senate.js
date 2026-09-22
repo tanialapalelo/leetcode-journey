@@ -231,3 +231,42 @@ var predictPartyVictory = function(senate) {
 
 // Time: O(n), each duel bans exactly one senator, so at most n - 1 duels
 // Space: O(n), the two queues
+
+/* Why a full lap has to be exactly n
+   Picture round 1's seats and round 2's seats laid out back to back, n = 3:
+
+  round 1:  0  1  2      round 2:  3  4  5
+
+   Seat 0 acting again in round 2 needs a number bigger than every round-1 seat (0, 1, 2), so that when you compare positions later, "acts sooner" still means "smaller number." The
+   smallest number that clears all of round 1 is 0 + n = 3. If you used n - 1 instead, 0 + (n-1) = 2, and 2 is already taken, it's seat 2's real round-1 position. You'd have two
+   different senators both labeled "2."
+*/
+
+// --------------------------------------- MY TRY ------------------------------------------------
+
+/**
+ * @param {string} senate
+ * @return {string}
+ */
+var predictPartyVictory = function(senate) {
+    const radiant = []; // keep track of R elements
+    const dire = []; // keep track of D elements
+    const n = senate.length;
+
+    for( let i=0; i<n; i++ ){
+        // push to radiant / dire
+        if(senate[i]==="R") radiant.push(i);
+        else dire.push(i);
+    }
+
+    while( radiant.length && dire.length ){
+        // removes 1st elements
+        const r = radiant.shift();
+        const d = dire.shift();
+
+        // the idea if r is 1st to start meaning the index will be small then it will bite off the d and r will go to the back of the radiant queue
+        if(r < d) radiant.push(r+n);
+        else dire.push(d+n);
+    }
+    return radiant.length > 0 ? "Radiant" : "Dire";
+};
