@@ -121,6 +121,14 @@ In-order traversal of a BST gives a sorted sequence.
        3   7
       / \ / \
      2  4 6  8
+
+"O(log n) average" is doing a lot of work in that sentence: a plain BST
+has no rule keeping it balanced, so inserting already-sorted input (or
+close to it) makes it degrade to O(n), a straight line of single-child
+nodes. Self-balancing variants (AVL, Red-Black) fix this by rebalancing
+on every insert. See "HEAP vs BST, why the complexities differ" in
+references/10.reference-heaps.js for a worked example of the skew and a
+full side-by-side with heaps, which never have this problem.
 */
 
 /*
