@@ -73,6 +73,7 @@ Currently following a structured course and building understanding step-by-step.
 | 71   | Open the Lock                                           | Medium | BFS, Queue                                 |
 | 72   | Dota2 Senate                                            | Medium | Queue, Greedy, Simulation                  |
 | 73   | Last Stone Weight                                       | Easy   | Heap                                       |
+| 74   | Kth Largest Element in an Array                         | Medium   | Heap                                       |
 
 > Numbers 39 and 40 are intentionally left open, reserved for two more course/video
 > problems not yet solved. Reverse Linked List and Middle of the Linked List were

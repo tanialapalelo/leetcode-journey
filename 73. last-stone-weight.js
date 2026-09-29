@@ -246,3 +246,35 @@ var lastStoneWeight = function(stones) {
 
 // Time: O(n log n), n pushes to build the heap + up to n-1 rounds of pop/pop/push
 // Space: O(n), the heap array
+
+/* -------------------------------------------------------------------------------------
+ Note: In LeetCode's JavaScript environment, 
+ we could also use a built-in MaxPriorityQueue from @datastructures-js/priority-queue instead of implementing our own MaxHeap class.
+*/
+
+/**
+ * @param {number[]} stones
+ * @return {number}
+ */
+var lastStoneWeight = function(stones) {
+    // 1. Initialize LeetCode's globally available MaxPriorityQueue
+    const maxHeap = new MaxPriorityQueue();
+    
+    // 2. Add all stones into the heap
+    for (const s of stones) {
+        maxHeap.enqueue(s);
+    }
+
+    // 3. Smash stones until 0 or 1 remains
+    while (maxHeap.size() > 1) {
+        const y = maxHeap.dequeue(); // heaviest element value
+        const x = maxHeap.dequeue(); // second heaviest element value
+        
+        if (y !== x) {
+            maxHeap.enqueue(y - x); // push difference back
+        }
+    }
+
+    // 4. In LeetCode's library, use .front() to inspect the top value
+    return maxHeap.size() ? maxHeap.front() : 0;
+};
