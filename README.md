@@ -74,6 +74,7 @@ Currently following a structured course and building understanding step-by-step.
 | 72   | Dota2 Senate                                            | Medium | Queue, Greedy, Simulation                  |
 | 73   | Last Stone Weight                                       | Easy   | Heap                                       |
 | 74   | Kth Largest Element in an Array                         | Medium   | Heap                                       |
+| 75   | K Closest Points to Origin                              | Medium   | Heap                                       |
 
 > Numbers 39 and 40 are intentionally left open, reserved for two more course/video
 > problems not yet solved. Reverse Linked List and Middle of the Linked List were
@@ -89,27 +90,27 @@ Currently following a structured course and building understanding step-by-step.
 
 ## Patterns Covered
 
-- **Hash Map / Set** — frequency counting, grouping, lookups
-- **Sliding Window** — fixed & variable window, shrink/expand
-- **Two Pointers** — opposite ends, same direction, three pointers
-- **Monotonic Deque** — maintaining max/min in window
-- **Prefix** — prefix sum/product
-- **Math / String** — basic manipulation
-- **Binary Search** — classic, find bounds, sorted array variants
-- **Dutch National Flag** — three-pointer single-pass partitioning into three regions
-- **Boyer-Moore Voting** — O(1) space majority element via vote cancellation
-- **Linked List** — traversal, reversal, fast & slow pointers, merge sort (top-down and bottom-up), dummy head nodes, Floyd's cycle detection
-- **Binary Search on Answer** — search over the space of possible answers using a monotonic feasibility check, not over array indices
-- **Greedy / Custom Comparator Sort** — exchange-argument sorting for optimal arrangement problems
-- **Stack** — LIFO push/pop, matching/nested structures, design problems (Min/Max Stack)
-- **Monotonic Stack** — maintaining an increasing/decreasing stack to answer "next greater/smaller" style questions in O(n)
+- **Hash Map / Set** - frequency counting, grouping, lookups
+- **Sliding Window** - fixed & variable window, shrink/expand
+- **Two Pointers** - opposite ends, same direction, three pointers
+- **Monotonic Deque** - maintaining max/min in window
+- **Prefix** - prefix sum/product
+- **Math / String** - basic manipulation
+- **Binary Search** - classic, find bounds, sorted array variants
+- **Dutch National Flag** - three-pointer single-pass partitioning into three regions
+- **Boyer-Moore Voting** - O(1) space majority element via vote cancellation
+- **Linked List** - traversal, reversal, fast & slow pointers, merge sort (top-down and bottom-up), dummy head nodes, Floyd's cycle detection
+- **Binary Search on Answer** - search over the space of possible answers using a monotonic feasibility check, not over array indices
+- **Greedy / Custom Comparator Sort** - exchange-argument sorting for optimal arrangement problems
+- **Stack** - LIFO push/pop, matching/nested structures, design problems (Min/Max Stack)
+- **Monotonic Stack** - maintaining an increasing/decreasing stack to answer "next greater/smaller" style questions in O(n)
 - **Queue**: FIFO enqueue/dequeue, implementing one structure using another (queue from two stacks, stack from queues), amortized time analysis, circular queue (ring buffer) with modulo wraparound, two queues to simulate turn order (Dota2 Senate)
 - **Heap**: repeatedly access the current min/max as the collection changes, max-heap for "always smash the two biggest" (Last Stone Weight), why it beats re-sorting every round
 - **BFS**: searching level by level for the fewest moves in an unweighted graph, visited set to avoid repeats, blocked states pre-marked as visited (Open the Lock)
 
 ## Practice Order (By Category)
 
-The table above is ordered by **when I solved it** (matches the course/video order). Numbering is flat and append-only going forward — file names shouldn't get renamed once added. (One collision from an earlier renumbering did get fixed by moving two files to 47-48; see the note above.)
+The table above is ordered by **when I solved it** (matches the course/video order). Numbering is flat and append-only going forward - file names shouldn't get renamed once added. (One collision from an earlier renumbering did get fixed by moving two files to 47-48; see the note above.)
 
 When practicing from a different list (grouped by topic instead of by video), use this table instead. It's just a second view over the same files, grouped by pattern.
 
@@ -233,12 +234,12 @@ When practicing from a different list (grouped by topic instead of by video), us
 ## Reference Files
 
 Standalone concept files to review when you need to understand the foundations.
-Read them in this order — each one builds on the previous.
+Read them in this order - each one builds on the previous.
 
 | Order | File                                      | What it covers                                          |
 |-------|-------------------------------------------|---------------------------------------------------------|
 | 1     | `1.reference-big-o.js`                   | Complexity notation, rules, drop constants, cheat sheet |
-| 2     | `2.reference-data-structures.js`         | Array, HashMap, Set, Stack, Queue — when to use each    |
+| 2     | `2.reference-data-structures.js`         | Array, HashMap, Set, Stack, Queue - when to use each    |
 | 3     | `3.reference-sorting-algorithms.js`      | Bubble, Selection, Insertion, Merge, Quick, JS .sort()  |
 | 4     | `4.reference-two-pointers.js`            | Opposite ends, same direction, three pointers           |
 | 5     | `5.reference-sliding-window.js`          | Fixed window, dynamic expand/shrink                     |
@@ -252,16 +253,16 @@ Read them in this order — each one builds on the previous.
 | 13    | `13.reference-stacks.js`                 | LIFO ops, Valid Parentheses, Min/Max Stack, monotonic stack, RPN |
 | 14    | `14.reference-queues.js`                 | FIFO ops, BFS, multi-source BFS, queue from two stacks, circular queue, deque |
 
-> Start with Big-O (#1) — everything else references it.
+> Start with Big-O (#1) - everything else references it.
 > Read #4 and #5 after solving a few Two Pointer / Sliding Window problems so the patterns feel familiar.
 > Read #13 and #14 after solving the Stacks & Queues problems (53 to 72), then #10 after solving problem 73 so the patterns feel familiar.
-> Save DP (#11) for last — it's the hardest and needs everything before it.
+> Save DP (#11) for last - it's the hardest and needs everything before it.
 
 ## Study Method
 
-1. **Day 1** — Learn from course + understand solution
-2. **Day 2** — Re-read problem, write pseudocode, code with minimal hints
-3. **Day 3** — Solve from scratch without any reference
+1. **Day 1** - Learn from course + understand solution
+2. **Day 2** - Re-read problem, write pseudocode, code with minimal hints
+3. **Day 3** - Solve from scratch without any reference
 
 ## Tech Stack
 
