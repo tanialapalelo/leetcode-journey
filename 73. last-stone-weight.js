@@ -102,9 +102,7 @@ THE NAIVE APPROACH, and why it's slower
         if (y !== x) arr.push(y - x);
     }
 
-  I ran this side by side with the heap version on 2000 random stone
-  piles, both always agree, so it IS correct. But sorting the entire
-  array again just to find the top 2 is wasteful: at most n - 1 rounds
+  But sorting the entire array again just to find the top 2 is wasteful: at most n - 1 rounds
   happen (each round removes at least 1 stone), and each round pays
   O(n log n) to re-sort, that's O(n^2 log n) overall.
 
@@ -120,16 +118,45 @@ THE NAIVE APPROACH, and why it's slower
   interviewers want, because it's the pattern that scales, and because
   "repeatedly take the max" is a heap's whole reason for existing.
 
-WHY MAX-HEAP, NOT MIN-HEAP
-  We always want the two LARGEST stones, so we want fast access to the
-  current maximum, that's a MAX-heap (largest on top), not a min-heap.
-  JavaScript's MinHeap from the reference file can be reused for this by
-  negating every value on the way in and out (push(-v), and negate again
-  when you read a value back out), the smallest NEGATIVE number is the
-  largest ORIGINAL number. This file below implements a max-heap
-  directly instead (same code as MinHeap, just with > instead of <),
-  so the trick isn't needed here, but you'll see the negation trick
-  used elsewhere since JS has no built-in max-heap either.
+WHY MAX-HEAP, NOT MIN-HEAP, walk it through by trying the wrong one first
+  A heap.peek() ALWAYS hands you whatever sits on top, that's the entire
+  point of a heap, O(1) access to "the one on top." So the real question
+  isn't "which heap is fast," they're both equally fast, the question is
+  "which one puts the stone I actually need on top?"
+
+  Check what the problem asks for, literally: "choose the heaviest two
+  stones." Heaviest. Biggest number. Not smallest.
+
+  Now try feeding stones = [2, 7, 4, 1, 8, 1] into a MIN-heap (the one
+  from the reference file, unmodified) and see what peek()/pop() give you:
+
+    min-heap's internal array after pushing all 6:  [1, 2, 1, 7, 8, 4]
+    peek() -> 1
+    popping everything, one at a time, in order:     1, 1, 2, 4, 7, 8
+
+  That's the pile sitting there, but delivered SMALLEST first. If you
+  pop() twice expecting "the two heaviest," a min-heap instead hands you
+  1 and 1, the two LIGHTEST stones in the whole pile. Smash those and
+  you get a completely different (wrong) game from the one in the
+  example, which needs 8 and 7 first.
+
+  A MAX-heap, on the same 6 stones, delivers biggest first: 8, 7, 4, 2,
+  1, 1, 1 (check the walkthrough below, the first two pops are exactly
+  y=8, x=7, matching round 1 of the hand-traced example). That's what
+  lets `heap.pop(); heap.pop();` directly become "grab the two heaviest,"
+  with zero extra logic, because "on top" already means "the biggest."
+
+  Short version: the heap TYPE (min or max) isn't about speed, both are
+  O(log n). It's about which value physically ends up on top, and you
+  pick whichever one matches what the problem keeps asking you to grab.
+  This problem says "heaviest" over and over, so: max-heap.
+
+  (Side note, not needed here but worth knowing: JS has no built-in
+  max-heap, so people commonly fake one out of a min-heap by negating
+  every value, push(-v) going in, negate again coming out, since the
+  smallest NEGATIVE number is the largest ORIGINAL number. This file
+  skips that trick and implements MaxHeap directly instead, same code
+  as MinHeap, just > instead of <.)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 WALKTHROUGH WITH THE ACTUAL HEAP, stones = [2, 7, 4, 1, 8, 1]
