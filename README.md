@@ -75,6 +75,8 @@ Currently following a structured course and building understanding step-by-step.
 | 73   | Last Stone Weight                                       | Easy   | Heap                                       |
 | 74   | Kth Largest Element in an Array                         | Medium   | Heap                                       |
 | 75   | K Closest Points to Origin                              | Medium   | Heap                                       |
+| 76   | High Five                                               | Easy     | Heap                                       |
+| 77   | Kth Largest Element in a Stream                         | Easy     | Heap, Design                               |
 
 > Numbers 39 and 40 are intentionally left open, reserved for two more course/video
 > problems not yet solved. Reverse Linked List and Middle of the Linked List were
@@ -224,6 +226,8 @@ When practicing from a different list (grouped by topic instead of by video), us
 | Problem | Difficulty | File |
 |---|---|---|
 | Last Stone Weight | Easy | [73. last-stone-weight.js](./73.%20last-stone-weight.js) |
+| High Five | Easy | [76. high-five.js](./76.%20high-five.js) |
+| Kth Largest Element in a Stream | Easy | [77. kth-largest-element-in-a-stream.js](./77.%20kth-largest-element-in-a-stream.js) |
 
 ### Matrix / Misc
 
